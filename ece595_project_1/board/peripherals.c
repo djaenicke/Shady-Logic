@@ -41,10 +41,25 @@ product: Peripherals v1.0
 /* This is a template for board specific configuration created by MCUXpresso IDE Project Wizard.*/
 
 #include "peripherals.h"
+#include "fsl_gpio.h"
+#include "io_abstraction.h"
 
 /**
  * @brief Set up and initialize all required blocks and functions related to the peripherals hardware.
  */
-void BOARD_InitBootPeripherals(void) {
-	/* The user initialization should be placed here */
+void BOARD_InitBootPeripherals(void)
+{
+    gpio_pin_config_t pin_config;
+    uint8_t i;
+
+    for (i=0; i<NUM_IO; i++)
+    {
+        if (kPORT_MuxAsGpio == Pin_Cfgs[i].mux)
+        {
+            pin_config.pinDirection = Pin_Cfgs[i].dir;
+            pin_config.outputLogic = Pin_Cfgs[i].init_state;
+            GPIO_PinInit(Pin_Cfgs[i].gbase, Pin_Cfgs[i].pin, &pin_config);
+        }
+    }
 }
+

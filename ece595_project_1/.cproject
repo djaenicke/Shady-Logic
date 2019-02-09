@@ -21,14 +21,14 @@
 							<targetPlatform binaryParser="org.eclipse.cdt.core.ELF;org.eclipse.cdt.core.GNU_ELF" id="com.crt.advproject.platform.exe.debug.1573055728" name="ARM-based MCU (Debug)" superClass="com.crt.advproject.platform.exe.debug"/>
 							<builder buildPath="${workspace_loc:/ece595_project_1}/Debug" id="com.crt.advproject.builder.exe.debug.1569968900" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="com.crt.advproject.builder.exe.debug"/>
 							<tool id="com.crt.advproject.cpp.exe.debug.955860833" name="MCU C++ Compiler" superClass="com.crt.advproject.cpp.exe.debug">
-								<option id="com.crt.advproject.cpp.thumb.1512127351" name="Thumb mode" superClass="com.crt.advproject.cpp.thumb" value="true" valueType="boolean"/>
-								<option id="com.crt.advproject.cpp.specs.285625056" name="Specs" superClass="com.crt.advproject.cpp.specs" value="com.crt.advproject.cpp.specs.newlibnano" valueType="enumerated"/>
-								<option id="com.crt.advproject.cpp.arch.523494539" name="Architecture" superClass="com.crt.advproject.cpp.arch" value="com.crt.advproject.cpp.target.cm4" valueType="enumerated"/>
-								<option id="com.crt.advproject.cpp.misc.dialect.1966758288" name="Language standard" superClass="com.crt.advproject.cpp.misc.dialect"/>
-								<option id="gnu.cpp.compiler.option.dialect.flags.1581979573" name="Other dialect flags" superClass="gnu.cpp.compiler.option.dialect.flags"/>
-								<option id="gnu.cpp.compiler.option.preprocessor.nostdinc.1185718569" name="Do not search system directories (-nostdinc)" superClass="gnu.cpp.compiler.option.preprocessor.nostdinc"/>
-								<option id="gnu.cpp.compiler.option.preprocessor.preprocess.49495742" name="Preprocess only (-E)" superClass="gnu.cpp.compiler.option.preprocessor.preprocess"/>
-								<option id="gnu.cpp.compiler.option.preprocessor.def.217590301" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" valueType="definedSymbols">
+								<option id="com.crt.advproject.cpp.thumb.1512127351" name="Thumb mode" superClass="com.crt.advproject.cpp.thumb" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="com.crt.advproject.cpp.specs.285625056" name="Specs" superClass="com.crt.advproject.cpp.specs" useByScannerDiscovery="false" value="com.crt.advproject.cpp.specs.newlibnano" valueType="enumerated"/>
+								<option id="com.crt.advproject.cpp.arch.523494539" name="Architecture" superClass="com.crt.advproject.cpp.arch" useByScannerDiscovery="false" value="com.crt.advproject.cpp.target.cm4" valueType="enumerated"/>
+								<option id="com.crt.advproject.cpp.misc.dialect.1966758288" name="Language standard" superClass="com.crt.advproject.cpp.misc.dialect" useByScannerDiscovery="true"/>
+								<option id="gnu.cpp.compiler.option.dialect.flags.1581979573" name="Other dialect flags" superClass="gnu.cpp.compiler.option.dialect.flags" useByScannerDiscovery="true"/>
+								<option id="gnu.cpp.compiler.option.preprocessor.nostdinc.1185718569" name="Do not search system directories (-nostdinc)" superClass="gnu.cpp.compiler.option.preprocessor.nostdinc" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.compiler.option.preprocessor.preprocess.49495742" name="Preprocess only (-E)" superClass="gnu.cpp.compiler.option.preprocessor.preprocess" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.compiler.option.preprocessor.def.217590301" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="FSL_RTOS_FREE_RTOS"/>
 									<listOptionValue builtIn="false" value="SDK_OS_FREE_RTOS"/>
 									<listOptionValue builtIn="false" value="SDK_DEBUGCONSOLE=0"/>
@@ -39,57 +39,60 @@
 									<listOptionValue builtIn="false" value="DEBUG"/>
 									<listOptionValue builtIn="false" value="__NEWLIB__"/>
 								</option>
-								<option id="gnu.cpp.compiler.option.preprocessor.undef.556173665" name="Undefined symbols (-U)" superClass="gnu.cpp.compiler.option.preprocessor.undef"/>
-								<option id="gnu.cpp.compiler.option.include.paths.1342335160" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="../board"/>
+								<option id="gnu.cpp.compiler.option.preprocessor.undef.556173665" name="Undefined symbols (-U)" superClass="gnu.cpp.compiler.option.preprocessor.undef" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.compiler.option.include.paths.1342335160" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="../CMSIS"/>
 									<listOptionValue builtIn="false" value="../source"/>
-									<listOptionValue builtIn="false" value="../"/>
+									<listOptionValue builtIn="false" value="../drivers/freertos"/>
+									<listOptionValue builtIn="false" value="../drivers"/>
+									<listOptionValue builtIn="false" value="../component/serial_manager"/>
 									<listOptionValue builtIn="false" value="../amazon-freertos/include"/>
 									<listOptionValue builtIn="false" value="../amazon-freertos/FreeRTOS/portable"/>
-									<listOptionValue builtIn="false" value="../drivers"/>
+									<listOptionValue builtIn="false" value="../utilities"/>
 									<listOptionValue builtIn="false" value="../device"/>
-									<listOptionValue builtIn="false" value="../CMSIS"/>
-									<listOptionValue builtIn="false" value="../drivers/freertos"/>
+									<listOptionValue builtIn="false" value="../board"/>
+									<listOptionValue builtIn="false" value="../source/hw_abstraction"/>
+									<listOptionValue builtIn="false" value="../"/>
 								</option>
-								<option id="gnu.cpp.compiler.option.include.files.1323583058" name="Include files (-include)" superClass="gnu.cpp.compiler.option.include.files"/>
-								<option id="com.crt.advproject.cpp.exe.debug.option.optimization.level.424693384" name="Optimization Level" superClass="com.crt.advproject.cpp.exe.debug.option.optimization.level"/>
-								<option id="gnu.cpp.compiler.option.optimization.flags.23840426" name="Other optimization flags" superClass="gnu.cpp.compiler.option.optimization.flags" value="-fno-common" valueType="string"/>
-								<option id="com.crt.advproject.cpp.exe.debug.option.debugging.level.1589529286" name="Debug Level" superClass="com.crt.advproject.cpp.exe.debug.option.debugging.level"/>
-								<option id="gnu.cpp.compiler.option.debugging.other.1892438953" name="Other debugging flags" superClass="gnu.cpp.compiler.option.debugging.other"/>
-								<option id="gnu.cpp.compiler.option.debugging.prof.678462384" name="Generate prof information (-p)" superClass="gnu.cpp.compiler.option.debugging.prof"/>
-								<option id="gnu.cpp.compiler.option.debugging.gprof.250281131" name="Generate gprof information (-pg)" superClass="gnu.cpp.compiler.option.debugging.gprof"/>
-								<option id="gnu.cpp.compiler.option.debugging.codecov.366220912" name="Generate gcov information (-ftest-coverage -fprofile-arcs)" superClass="gnu.cpp.compiler.option.debugging.codecov"/>
-								<option id="gnu.cpp.compiler.option.warnings.syntax.2146254768" name="Check syntax only (-fsyntax-only)" superClass="gnu.cpp.compiler.option.warnings.syntax"/>
-								<option id="gnu.cpp.compiler.option.warnings.pedantic.414105884" name="Pedantic (-pedantic)" superClass="gnu.cpp.compiler.option.warnings.pedantic"/>
-								<option id="gnu.cpp.compiler.option.warnings.pedantic.error.1604638394" name="Pedantic warnings as errors (-pedantic-errors)" superClass="gnu.cpp.compiler.option.warnings.pedantic.error"/>
-								<option id="gnu.cpp.compiler.option.warnings.nowarn.805762589" name="Inhibit all warnings (-w)" superClass="gnu.cpp.compiler.option.warnings.nowarn"/>
-								<option id="gnu.cpp.compiler.option.warnings.allwarn.1297638227" name="All warnings (-Wall)" superClass="gnu.cpp.compiler.option.warnings.allwarn"/>
-								<option id="gnu.cpp.compiler.option.warnings.extrawarn.1815295404" name="Extra warnings (-Wextra)" superClass="gnu.cpp.compiler.option.warnings.extrawarn"/>
-								<option id="gnu.cpp.compiler.option.warnings.toerrors.910946891" name="Warnings as errors (-Werror)" superClass="gnu.cpp.compiler.option.warnings.toerrors"/>
-								<option id="gnu.cpp.compiler.option.warnings.wconversion.1622379668" name="Implicit conversion warnings (-Wconversion)" superClass="gnu.cpp.compiler.option.warnings.wconversion"/>
-								<option id="gnu.cpp.compiler.option.other.other.608333929" name="Other flags" superClass="gnu.cpp.compiler.option.other.other"/>
-								<option id="gnu.cpp.compiler.option.other.verbose.977550394" name="Verbose (-v)" superClass="gnu.cpp.compiler.option.other.verbose"/>
-								<option id="gnu.cpp.compiler.option.other.pic.703794110" name="Position Independent Code (-fPIC)" superClass="gnu.cpp.compiler.option.other.pic"/>
-								<option id="com.crt.advproject.cpp.lto.208205377" name="Enable Link-time optimization (-flto)" superClass="com.crt.advproject.cpp.lto"/>
-								<option id="com.crt.advproject.cpp.lto.fat.833437166" name="Fat lto objects (-ffat-lto-objects)" superClass="com.crt.advproject.cpp.lto.fat"/>
-								<option id="com.crt.advproject.cpp.fpu.186829625" name="Floating point" superClass="com.crt.advproject.cpp.fpu" value="com.crt.advproject.cpp.fpu.fpv4.hard" valueType="enumerated"/>
-								<option id="com.crt.advproject.cpp.thumbinterwork.1796773324" name="Enable Thumb interworking" superClass="com.crt.advproject.cpp.thumbinterwork"/>
-								<option id="com.crt.advproject.cpp.securestate.154015196" name="TrustZone Project Type" superClass="com.crt.advproject.cpp.securestate"/>
-								<option id="com.crt.advproject.cpp.hdrlib.445406622" name="Library headers" superClass="com.crt.advproject.cpp.hdrlib"/>
-								<option id="com.crt.advproject.cpp.config.1621495504" name="Obsolete (Config)" superClass="com.crt.advproject.cpp.config"/>
-								<option id="com.crt.advproject.cpp.store.203924742" name="Obsolete (Store)" superClass="com.crt.advproject.cpp.store"/>
+								<option id="gnu.cpp.compiler.option.include.files.1323583058" name="Include files (-include)" superClass="gnu.cpp.compiler.option.include.files" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.cpp.exe.debug.option.optimization.level.424693384" name="Optimization Level" superClass="com.crt.advproject.cpp.exe.debug.option.optimization.level" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.compiler.option.optimization.flags.23840426" name="Other optimization flags" superClass="gnu.cpp.compiler.option.optimization.flags" useByScannerDiscovery="false" value="-fno-common" valueType="string"/>
+								<option id="com.crt.advproject.cpp.exe.debug.option.debugging.level.1589529286" name="Debug Level" superClass="com.crt.advproject.cpp.exe.debug.option.debugging.level" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.compiler.option.debugging.other.1892438953" name="Other debugging flags" superClass="gnu.cpp.compiler.option.debugging.other" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.compiler.option.debugging.prof.678462384" name="Generate prof information (-p)" superClass="gnu.cpp.compiler.option.debugging.prof" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.compiler.option.debugging.gprof.250281131" name="Generate gprof information (-pg)" superClass="gnu.cpp.compiler.option.debugging.gprof" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.compiler.option.debugging.codecov.366220912" name="Generate gcov information (-ftest-coverage -fprofile-arcs)" superClass="gnu.cpp.compiler.option.debugging.codecov" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.compiler.option.warnings.syntax.2146254768" name="Check syntax only (-fsyntax-only)" superClass="gnu.cpp.compiler.option.warnings.syntax" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.compiler.option.warnings.pedantic.414105884" name="Pedantic (-pedantic)" superClass="gnu.cpp.compiler.option.warnings.pedantic" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.compiler.option.warnings.pedantic.error.1604638394" name="Pedantic warnings as errors (-pedantic-errors)" superClass="gnu.cpp.compiler.option.warnings.pedantic.error" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.compiler.option.warnings.nowarn.805762589" name="Inhibit all warnings (-w)" superClass="gnu.cpp.compiler.option.warnings.nowarn" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.compiler.option.warnings.allwarn.1297638227" name="All warnings (-Wall)" superClass="gnu.cpp.compiler.option.warnings.allwarn" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.compiler.option.warnings.extrawarn.1815295404" name="Extra warnings (-Wextra)" superClass="gnu.cpp.compiler.option.warnings.extrawarn" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.compiler.option.warnings.toerrors.910946891" name="Warnings as errors (-Werror)" superClass="gnu.cpp.compiler.option.warnings.toerrors" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.compiler.option.warnings.wconversion.1622379668" name="Implicit conversion warnings (-Wconversion)" superClass="gnu.cpp.compiler.option.warnings.wconversion" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.compiler.option.other.other.608333929" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.compiler.option.other.verbose.977550394" name="Verbose (-v)" superClass="gnu.cpp.compiler.option.other.verbose" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.compiler.option.other.pic.703794110" name="Position Independent Code (-fPIC)" superClass="gnu.cpp.compiler.option.other.pic" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.cpp.lto.208205377" name="Enable Link-time optimization (-flto)" superClass="com.crt.advproject.cpp.lto" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.cpp.lto.fat.833437166" name="Fat lto objects (-ffat-lto-objects)" superClass="com.crt.advproject.cpp.lto.fat" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.cpp.fpu.186829625" name="Floating point" superClass="com.crt.advproject.cpp.fpu" useByScannerDiscovery="false" value="com.crt.advproject.cpp.fpu.fpv4.hard" valueType="enumerated"/>
+								<option id="com.crt.advproject.cpp.thumbinterwork.1796773324" name="Enable Thumb interworking" superClass="com.crt.advproject.cpp.thumbinterwork" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.cpp.securestate.154015196" name="TrustZone Project Type" superClass="com.crt.advproject.cpp.securestate" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.cpp.hdrlib.445406622" name="Library headers" superClass="com.crt.advproject.cpp.hdrlib" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.cpp.config.1621495504" name="Obsolete (Config)" superClass="com.crt.advproject.cpp.config" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.cpp.store.203924742" name="Obsolete (Store)" superClass="com.crt.advproject.cpp.store" useByScannerDiscovery="false"/>
 								<inputType id="com.crt.advproject.compiler.cpp.input.1780201112" superClass="com.crt.advproject.compiler.cpp.input"/>
 							</tool>
 							<tool id="com.crt.advproject.gcc.exe.debug.1114914625" name="MCU C Compiler" superClass="com.crt.advproject.gcc.exe.debug">
-								<option id="com.crt.advproject.gcc.thumb.1232313636" name="Thumb mode" superClass="com.crt.advproject.gcc.thumb" value="true" valueType="boolean"/>
-								<option id="com.crt.advproject.gcc.hdrlib.1007325208" name="Library headers" superClass="com.crt.advproject.gcc.hdrlib" value="com.crt.advproject.gcc.hdrlib.newlibnano" valueType="enumerated"/>
-								<option id="com.crt.advproject.gcc.specs.1563379356" name="Specs" superClass="com.crt.advproject.gcc.specs" value="com.crt.advproject.gcc.specs.newlibnano" valueType="enumerated"/>
-								<option id="com.crt.advproject.gcc.arch.129833510" name="Architecture" superClass="com.crt.advproject.gcc.arch" value="com.crt.advproject.gcc.target.cm4" valueType="enumerated"/>
-								<option id="com.crt.advproject.c.misc.dialect.1857294847" name="Language standard" superClass="com.crt.advproject.c.misc.dialect"/>
-								<option id="gnu.c.compiler.option.dialect.flags.614264629" name="Other dialect flags" superClass="gnu.c.compiler.option.dialect.flags"/>
-								<option id="gnu.c.compiler.option.preprocessor.nostdinc.1443427644" name="Do not search system directories (-nostdinc)" superClass="gnu.c.compiler.option.preprocessor.nostdinc"/>
-								<option id="gnu.c.compiler.option.preprocessor.preprocess.450826969" name="Preprocess only (-E)" superClass="gnu.c.compiler.option.preprocessor.preprocess"/>
-								<option id="gnu.c.compiler.option.preprocessor.def.symbols.160590373" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" valueType="definedSymbols">
+								<option id="com.crt.advproject.gcc.thumb.1232313636" name="Thumb mode" superClass="com.crt.advproject.gcc.thumb" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="com.crt.advproject.gcc.hdrlib.1007325208" name="Library headers" superClass="com.crt.advproject.gcc.hdrlib" useByScannerDiscovery="false" value="com.crt.advproject.gcc.hdrlib.newlibnano" valueType="enumerated"/>
+								<option id="com.crt.advproject.gcc.specs.1563379356" name="Specs" superClass="com.crt.advproject.gcc.specs" useByScannerDiscovery="false" value="com.crt.advproject.gcc.specs.newlibnano" valueType="enumerated"/>
+								<option id="com.crt.advproject.gcc.arch.129833510" name="Architecture" superClass="com.crt.advproject.gcc.arch" useByScannerDiscovery="false" value="com.crt.advproject.gcc.target.cm4" valueType="enumerated"/>
+								<option id="com.crt.advproject.c.misc.dialect.1857294847" name="Language standard" superClass="com.crt.advproject.c.misc.dialect" useByScannerDiscovery="true"/>
+								<option id="gnu.c.compiler.option.dialect.flags.614264629" name="Other dialect flags" superClass="gnu.c.compiler.option.dialect.flags" useByScannerDiscovery="true"/>
+								<option id="gnu.c.compiler.option.preprocessor.nostdinc.1443427644" name="Do not search system directories (-nostdinc)" superClass="gnu.c.compiler.option.preprocessor.nostdinc" useByScannerDiscovery="false"/>
+								<option id="gnu.c.compiler.option.preprocessor.preprocess.450826969" name="Preprocess only (-E)" superClass="gnu.c.compiler.option.preprocessor.preprocess" useByScannerDiscovery="false"/>
+								<option id="gnu.c.compiler.option.preprocessor.def.symbols.160590373" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="FSL_RTOS_FREE_RTOS"/>
 									<listOptionValue builtIn="false" value="SDK_OS_FREE_RTOS"/>
 									<listOptionValue builtIn="false" value="SDK_DEBUGCONSOLE=0"/>
@@ -100,124 +103,136 @@
 									<listOptionValue builtIn="false" value="DEBUG"/>
 									<listOptionValue builtIn="false" value="__NEWLIB__"/>
 								</option>
-								<option id="gnu.c.compiler.option.preprocessor.undef.symbol.1651564309" name="Undefined symbols (-U)" superClass="gnu.c.compiler.option.preprocessor.undef.symbol"/>
-								<option id="gnu.c.compiler.option.include.paths.1167193210" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="../board"/>
+								<option id="gnu.c.compiler.option.preprocessor.undef.symbol.1651564309" name="Undefined symbols (-U)" superClass="gnu.c.compiler.option.preprocessor.undef.symbol" useByScannerDiscovery="false"/>
+								<option id="gnu.c.compiler.option.include.paths.1167193210" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="../CMSIS"/>
 									<listOptionValue builtIn="false" value="../source"/>
-									<listOptionValue builtIn="false" value="../"/>
+									<listOptionValue builtIn="false" value="../drivers/freertos"/>
+									<listOptionValue builtIn="false" value="../drivers"/>
+									<listOptionValue builtIn="false" value="../component/serial_manager"/>
 									<listOptionValue builtIn="false" value="../amazon-freertos/include"/>
 									<listOptionValue builtIn="false" value="../amazon-freertos/FreeRTOS/portable"/>
-									<listOptionValue builtIn="false" value="../drivers"/>
+									<listOptionValue builtIn="false" value="../utilities"/>
 									<listOptionValue builtIn="false" value="../device"/>
-									<listOptionValue builtIn="false" value="../CMSIS"/>
-									<listOptionValue builtIn="false" value="../drivers/freertos"/>
+									<listOptionValue builtIn="false" value="../board"/>
+									<listOptionValue builtIn="false" value="../source/hw_abstraction"/>
+									<listOptionValue builtIn="false" value="../"/>
 								</option>
-								<option id="gnu.c.compiler.option.include.files.1161704686" name="Include files (-include)" superClass="gnu.c.compiler.option.include.files"/>
-								<option id="com.crt.advproject.gcc.exe.debug.option.optimization.level.575460479" name="Optimization Level" superClass="com.crt.advproject.gcc.exe.debug.option.optimization.level"/>
-								<option id="gnu.c.compiler.option.optimization.flags.811934541" name="Other optimization flags" superClass="gnu.c.compiler.option.optimization.flags" value="-fno-common" valueType="string"/>
-								<option id="com.crt.advproject.gcc.exe.debug.option.debugging.level.54687435" name="Debug Level" superClass="com.crt.advproject.gcc.exe.debug.option.debugging.level"/>
-								<option id="gnu.c.compiler.option.debugging.other.1255272823" name="Other debugging flags" superClass="gnu.c.compiler.option.debugging.other"/>
-								<option id="gnu.c.compiler.option.debugging.prof.973383840" name="Generate prof information (-p)" superClass="gnu.c.compiler.option.debugging.prof"/>
-								<option id="gnu.c.compiler.option.debugging.gprof.1239387942" name="Generate gprof information (-pg)" superClass="gnu.c.compiler.option.debugging.gprof"/>
-								<option id="gnu.c.compiler.option.debugging.codecov.1500400187" name="Generate gcov information (-ftest-coverage -fprofile-arcs)" superClass="gnu.c.compiler.option.debugging.codecov"/>
-								<option id="gnu.c.compiler.option.warnings.syntax.382061701" name="Check syntax only (-fsyntax-only)" superClass="gnu.c.compiler.option.warnings.syntax"/>
-								<option id="gnu.c.compiler.option.warnings.pedantic.43300617" name="Pedantic (-pedantic)" superClass="gnu.c.compiler.option.warnings.pedantic"/>
-								<option id="gnu.c.compiler.option.warnings.pedantic.error.1423374140" name="Pedantic warnings as errors (-pedantic-errors)" superClass="gnu.c.compiler.option.warnings.pedantic.error"/>
-								<option id="gnu.c.compiler.option.warnings.nowarn.394550467" name="Inhibit all warnings (-w)" superClass="gnu.c.compiler.option.warnings.nowarn"/>
-								<option id="gnu.c.compiler.option.warnings.allwarn.371742265" name="All warnings (-Wall)" superClass="gnu.c.compiler.option.warnings.allwarn"/>
-								<option id="gnu.c.compiler.option.warnings.extrawarn.1659155814" name="Extra warnings (-Wextra)" superClass="gnu.c.compiler.option.warnings.extrawarn"/>
-								<option id="gnu.c.compiler.option.warnings.toerrors.1219675212" name="Warnings as errors (-Werror)" superClass="gnu.c.compiler.option.warnings.toerrors"/>
-								<option id="gnu.c.compiler.option.warnings.wconversion.374799659" name="Implicit conversion warnings (-Wconversion)" superClass="gnu.c.compiler.option.warnings.wconversion"/>
-								<option id="gnu.c.compiler.option.misc.other.1060260804" name="Other flags" superClass="gnu.c.compiler.option.misc.other" value="-c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin" valueType="string"/>
-								<option id="gnu.c.compiler.option.misc.verbose.1306832617" name="Verbose (-v)" superClass="gnu.c.compiler.option.misc.verbose"/>
-								<option id="gnu.c.compiler.option.misc.ansi.1351038762" name="Support ANSI programs (-ansi)" superClass="gnu.c.compiler.option.misc.ansi"/>
-								<option id="gnu.c.compiler.option.misc.pic.1584891088" name="Position Independent Code (-fPIC)" superClass="gnu.c.compiler.option.misc.pic"/>
-								<option id="com.crt.advproject.gcc.lto.614950109" name="Enable Link-time optimization (-flto)" superClass="com.crt.advproject.gcc.lto"/>
-								<option id="com.crt.advproject.gcc.lto.fat.858465364" name="Fat lto objects (-ffat-lto-objects)" superClass="com.crt.advproject.gcc.lto.fat"/>
-								<option id="com.crt.advproject.gcc.fpu.1182638203" name="Floating point" superClass="com.crt.advproject.gcc.fpu" value="com.crt.advproject.gcc.fpu.fpv4.hard" valueType="enumerated"/>
-								<option id="com.crt.advproject.gcc.thumbinterwork.740841566" name="Enable Thumb interworking" superClass="com.crt.advproject.gcc.thumbinterwork"/>
-								<option id="com.crt.advproject.gcc.securestate.365506606" name="TrustZone Project Type" superClass="com.crt.advproject.gcc.securestate"/>
-								<option id="com.crt.advproject.gcc.config.1607387174" name="Obsolete (Config)" superClass="com.crt.advproject.gcc.config"/>
-								<option id="com.crt.advproject.gcc.store.1703513540" name="Obsolete (Store)" superClass="com.crt.advproject.gcc.store"/>
+								<option id="gnu.c.compiler.option.include.files.1161704686" name="Include files (-include)" superClass="gnu.c.compiler.option.include.files" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.gcc.exe.debug.option.optimization.level.575460479" name="Optimization Level" superClass="com.crt.advproject.gcc.exe.debug.option.optimization.level" useByScannerDiscovery="false"/>
+								<option id="gnu.c.compiler.option.optimization.flags.811934541" name="Other optimization flags" superClass="gnu.c.compiler.option.optimization.flags" useByScannerDiscovery="false" value="-fno-common" valueType="string"/>
+								<option id="com.crt.advproject.gcc.exe.debug.option.debugging.level.54687435" name="Debug Level" superClass="com.crt.advproject.gcc.exe.debug.option.debugging.level" useByScannerDiscovery="false"/>
+								<option id="gnu.c.compiler.option.debugging.other.1255272823" name="Other debugging flags" superClass="gnu.c.compiler.option.debugging.other" useByScannerDiscovery="false"/>
+								<option id="gnu.c.compiler.option.debugging.prof.973383840" name="Generate prof information (-p)" superClass="gnu.c.compiler.option.debugging.prof" useByScannerDiscovery="false"/>
+								<option id="gnu.c.compiler.option.debugging.gprof.1239387942" name="Generate gprof information (-pg)" superClass="gnu.c.compiler.option.debugging.gprof" useByScannerDiscovery="false"/>
+								<option id="gnu.c.compiler.option.debugging.codecov.1500400187" name="Generate gcov information (-ftest-coverage -fprofile-arcs)" superClass="gnu.c.compiler.option.debugging.codecov" useByScannerDiscovery="false"/>
+								<option id="gnu.c.compiler.option.warnings.syntax.382061701" name="Check syntax only (-fsyntax-only)" superClass="gnu.c.compiler.option.warnings.syntax" useByScannerDiscovery="false"/>
+								<option id="gnu.c.compiler.option.warnings.pedantic.43300617" name="Pedantic (-pedantic)" superClass="gnu.c.compiler.option.warnings.pedantic" useByScannerDiscovery="false"/>
+								<option id="gnu.c.compiler.option.warnings.pedantic.error.1423374140" name="Pedantic warnings as errors (-pedantic-errors)" superClass="gnu.c.compiler.option.warnings.pedantic.error" useByScannerDiscovery="false"/>
+								<option id="gnu.c.compiler.option.warnings.nowarn.394550467" name="Inhibit all warnings (-w)" superClass="gnu.c.compiler.option.warnings.nowarn" useByScannerDiscovery="false"/>
+								<option id="gnu.c.compiler.option.warnings.allwarn.371742265" name="All warnings (-Wall)" superClass="gnu.c.compiler.option.warnings.allwarn" useByScannerDiscovery="false"/>
+								<option id="gnu.c.compiler.option.warnings.extrawarn.1659155814" name="Extra warnings (-Wextra)" superClass="gnu.c.compiler.option.warnings.extrawarn" useByScannerDiscovery="false"/>
+								<option id="gnu.c.compiler.option.warnings.toerrors.1219675212" name="Warnings as errors (-Werror)" superClass="gnu.c.compiler.option.warnings.toerrors" useByScannerDiscovery="false"/>
+								<option id="gnu.c.compiler.option.warnings.wconversion.374799659" name="Implicit conversion warnings (-Wconversion)" superClass="gnu.c.compiler.option.warnings.wconversion" useByScannerDiscovery="false"/>
+								<option id="gnu.c.compiler.option.misc.other.1060260804" name="Other flags" superClass="gnu.c.compiler.option.misc.other" useByScannerDiscovery="false" value="-c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin" valueType="string"/>
+								<option id="gnu.c.compiler.option.misc.verbose.1306832617" name="Verbose (-v)" superClass="gnu.c.compiler.option.misc.verbose" useByScannerDiscovery="false"/>
+								<option id="gnu.c.compiler.option.misc.ansi.1351038762" name="Support ANSI programs (-ansi)" superClass="gnu.c.compiler.option.misc.ansi" useByScannerDiscovery="false"/>
+								<option id="gnu.c.compiler.option.misc.pic.1584891088" name="Position Independent Code (-fPIC)" superClass="gnu.c.compiler.option.misc.pic" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.gcc.lto.614950109" name="Enable Link-time optimization (-flto)" superClass="com.crt.advproject.gcc.lto" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.gcc.lto.fat.858465364" name="Fat lto objects (-ffat-lto-objects)" superClass="com.crt.advproject.gcc.lto.fat" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.gcc.fpu.1182638203" name="Floating point" superClass="com.crt.advproject.gcc.fpu" useByScannerDiscovery="false" value="com.crt.advproject.gcc.fpu.fpv4.hard" valueType="enumerated"/>
+								<option id="com.crt.advproject.gcc.thumbinterwork.740841566" name="Enable Thumb interworking" superClass="com.crt.advproject.gcc.thumbinterwork" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.gcc.securestate.365506606" name="TrustZone Project Type" superClass="com.crt.advproject.gcc.securestate" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.gcc.config.1607387174" name="Obsolete (Config)" superClass="com.crt.advproject.gcc.config" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.gcc.store.1703513540" name="Obsolete (Store)" superClass="com.crt.advproject.gcc.store" useByScannerDiscovery="false"/>
 								<inputType id="com.crt.advproject.compiler.input.1388441562" superClass="com.crt.advproject.compiler.input"/>
 							</tool>
 							<tool id="com.crt.advproject.gas.exe.debug.599768551" name="MCU Assembler" superClass="com.crt.advproject.gas.exe.debug">
-								<option id="com.crt.advproject.gas.thumb.2044471330" name="Thumb mode" superClass="com.crt.advproject.gas.thumb" value="true" valueType="boolean"/>
-								<option id="com.crt.advproject.gas.hdrlib.1202168841" name="Library headers" superClass="com.crt.advproject.gas.hdrlib" value="com.crt.advproject.gas.hdrlib.newlibnano" valueType="enumerated"/>
-								<option id="com.crt.advproject.gas.specs.904197042" name="Specs" superClass="com.crt.advproject.gas.specs" value="com.crt.advproject.gas.specs.newlibnano" valueType="enumerated"/>
-								<option id="com.crt.advproject.gas.arch.2115118401" name="Architecture" superClass="com.crt.advproject.gas.arch" value="com.crt.advproject.gas.target.cm4" valueType="enumerated"/>
-								<option id="gnu.both.asm.option.flags.crt.1561030264" name="Assembler flags" superClass="gnu.both.asm.option.flags.crt"/>
-								<option id="gnu.both.asm.option.include.paths.211677619" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="../board"/>
+								<option id="com.crt.advproject.gas.thumb.2044471330" name="Thumb mode" superClass="com.crt.advproject.gas.thumb" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="com.crt.advproject.gas.hdrlib.1202168841" name="Library headers" superClass="com.crt.advproject.gas.hdrlib" useByScannerDiscovery="false" value="com.crt.advproject.gas.hdrlib.newlibnano" valueType="enumerated"/>
+								<option id="com.crt.advproject.gas.specs.904197042" name="Specs" superClass="com.crt.advproject.gas.specs" useByScannerDiscovery="false" value="com.crt.advproject.gas.specs.newlibnano" valueType="enumerated"/>
+								<option id="com.crt.advproject.gas.arch.2115118401" name="Architecture" superClass="com.crt.advproject.gas.arch" useByScannerDiscovery="false" value="com.crt.advproject.gas.target.cm4" valueType="enumerated"/>
+								<option id="gnu.both.asm.option.flags.crt.1561030264" name="Assembler flags" superClass="gnu.both.asm.option.flags.crt" useByScannerDiscovery="false"/>
+								<option id="gnu.both.asm.option.include.paths.211677619" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="../CMSIS"/>
 									<listOptionValue builtIn="false" value="../source"/>
-									<listOptionValue builtIn="false" value="../"/>
+									<listOptionValue builtIn="false" value="../drivers/freertos"/>
+									<listOptionValue builtIn="false" value="../drivers"/>
+									<listOptionValue builtIn="false" value="../component/serial_manager"/>
 									<listOptionValue builtIn="false" value="../amazon-freertos/include"/>
 									<listOptionValue builtIn="false" value="../amazon-freertos/FreeRTOS/portable"/>
-									<listOptionValue builtIn="false" value="../drivers"/>
+									<listOptionValue builtIn="false" value="../utilities"/>
 									<listOptionValue builtIn="false" value="../device"/>
-									<listOptionValue builtIn="false" value="../CMSIS"/>
-									<listOptionValue builtIn="false" value="../drivers/freertos"/>
+									<listOptionValue builtIn="false" value="../board"/>
+									<listOptionValue builtIn="false" value="../source/hw_abstraction"/>
+									<listOptionValue builtIn="false" value="../"/>
+									<listOptionValue builtIn="false" value="c:/nxp/mcuxpressoide_10.3.0_2200/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/arm-none-eabi/include/c++/7.3.1"/>
+									<listOptionValue builtIn="false" value="c:/nxp/mcuxpressoide_10.3.0_2200/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/arm-none-eabi/include/c++/7.3.1/arm-none-eabi"/>
+									<listOptionValue builtIn="false" value="c:/nxp/mcuxpressoide_10.3.0_2200/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/arm-none-eabi/include/c++/7.3.1/backward"/>
+									<listOptionValue builtIn="false" value="c:/nxp/mcuxpressoide_10.3.0_2200/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/lib/gcc/arm-none-eabi/7.3.1/include"/>
+									<listOptionValue builtIn="false" value="c:/nxp/mcuxpressoide_10.3.0_2200/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/lib/gcc/arm-none-eabi/7.3.1/include-fixed"/>
+									<listOptionValue builtIn="false" value="c:/nxp/mcuxpressoide_10.3.0_2200/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/arm-none-eabi/include"/>
 								</option>
-								<option id="gnu.both.asm.option.warnings.nowarn.792734675" name="Suppress warnings (-W)" superClass="gnu.both.asm.option.warnings.nowarn"/>
-								<option id="gnu.both.asm.option.version.2040965719" name="Announce version (-v)" superClass="gnu.both.asm.option.version"/>
-								<option id="com.crt.advproject.gas.exe.debug.option.debugging.level.2077933482" name="Debug level" superClass="com.crt.advproject.gas.exe.debug.option.debugging.level"/>
-								<option id="com.crt.advproject.gas.fpu.552072840" name="Floating point" superClass="com.crt.advproject.gas.fpu" value="com.crt.advproject.gas.fpu.fpv4.hard" valueType="enumerated"/>
-								<option id="com.crt.advproject.gas.thumbinterwork.244344147" name="Enable Thumb interworking" superClass="com.crt.advproject.gas.thumbinterwork"/>
-								<option id="com.crt.advproject.gas.config.1526086850" name="Obsolete (Config)" superClass="com.crt.advproject.gas.config"/>
-								<option id="com.crt.advproject.gas.store.466837629" name="Obsolete (Store)" superClass="com.crt.advproject.gas.store"/>
+								<option id="gnu.both.asm.option.warnings.nowarn.792734675" name="Suppress warnings (-W)" superClass="gnu.both.asm.option.warnings.nowarn" useByScannerDiscovery="false"/>
+								<option id="gnu.both.asm.option.version.2040965719" name="Announce version (-v)" superClass="gnu.both.asm.option.version" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.gas.exe.debug.option.debugging.level.2077933482" name="Debug level" superClass="com.crt.advproject.gas.exe.debug.option.debugging.level" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.gas.fpu.552072840" name="Floating point" superClass="com.crt.advproject.gas.fpu" useByScannerDiscovery="false" value="com.crt.advproject.gas.fpu.fpv4.hard" valueType="enumerated"/>
+								<option id="com.crt.advproject.gas.thumbinterwork.244344147" name="Enable Thumb interworking" superClass="com.crt.advproject.gas.thumbinterwork" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.gas.config.1526086850" name="Obsolete (Config)" superClass="com.crt.advproject.gas.config" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.gas.store.466837629" name="Obsolete (Store)" superClass="com.crt.advproject.gas.store" useByScannerDiscovery="false"/>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1328156289" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 								<inputType id="com.crt.advproject.assembler.input.1532090374" name="Additional Assembly Source Files" superClass="com.crt.advproject.assembler.input"/>
 							</tool>
 							<tool id="com.crt.advproject.link.cpp.exe.debug.455756568" name="MCU C++ Linker" superClass="com.crt.advproject.link.cpp.exe.debug">
-								<option id="com.crt.advproject.link.cpp.thumb.1189053473" name="Thumb mode" superClass="com.crt.advproject.link.cpp.thumb" value="true" valueType="boolean"/>
-								<option id="com.crt.advproject.link.memory.load.image.cpp.1113464012" name="Plain load image" superClass="com.crt.advproject.link.memory.load.image.cpp" value="" valueType="string"/>
-								<option id="com.crt.advproject.link.memory.heapAndStack.cpp.337134698" name="Heap and Stack options" superClass="com.crt.advproject.link.memory.heapAndStack.cpp" value="&amp;Heap:Default;Post Data;Default&amp;Stack:Default;End;Default" valueType="string"/>
-								<option id="com.crt.advproject.link.memory.data.cpp.471412642" name="Global data placement" superClass="com.crt.advproject.link.memory.data.cpp" value="" valueType="string"/>
-								<option id="com.crt.advproject.link.memory.sections.cpp.805266824" name="Extra linker script input sections" superClass="com.crt.advproject.link.memory.sections.cpp" valueType="stringList"/>
-								<option id="com.crt.advproject.link.cpp.multicore.master.userobjs.1380670616" name="Slave Objects (not visible)" superClass="com.crt.advproject.link.cpp.multicore.master.userobjs" valueType="userObjs"/>
-								<option id="com.crt.advproject.link.cpp.arch.517860999" name="Architecture" superClass="com.crt.advproject.link.cpp.arch" value="com.crt.advproject.link.cpp.target.cm4" valueType="enumerated"/>
-								<option id="gnu.cpp.link.option.nostart.1135251935" name="Do not use standard start files (-nostartfiles)" superClass="gnu.cpp.link.option.nostart"/>
-								<option id="gnu.cpp.link.option.nodeflibs.776501125" name="Do not use default libraries (-nodefaultlibs)" superClass="gnu.cpp.link.option.nodeflibs"/>
-								<option id="gnu.cpp.link.option.nostdlibs.1084887881" name="No startup or default libs (-nostdlib)" superClass="gnu.cpp.link.option.nostdlibs" value="true" valueType="boolean"/>
-								<option id="gnu.cpp.link.option.strip.443049668" name="Omit all symbol information (-s)" superClass="gnu.cpp.link.option.strip"/>
-								<option id="gnu.cpp.link.option.libs.960375735" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs"/>
-								<option id="gnu.cpp.link.option.paths.509881994" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths"/>
-								<option id="gnu.cpp.link.option.flags.210308480" name="Linker flags" superClass="gnu.cpp.link.option.flags"/>
-								<option id="gnu.cpp.link.option.other.953056060" name="Other options (-Xlinker [option])" superClass="gnu.cpp.link.option.other" valueType="stringList">
+								<option id="com.crt.advproject.link.cpp.thumb.1189053473" name="Thumb mode" superClass="com.crt.advproject.link.cpp.thumb" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="com.crt.advproject.link.memory.load.image.cpp.1113464012" name="Plain load image" superClass="com.crt.advproject.link.memory.load.image.cpp" useByScannerDiscovery="false" value="" valueType="string"/>
+								<option id="com.crt.advproject.link.memory.heapAndStack.cpp.337134698" name="Heap and Stack options" superClass="com.crt.advproject.link.memory.heapAndStack.cpp" useByScannerDiscovery="false" value="&amp;Heap:Default;Post Data;Default&amp;Stack:Default;End;Default" valueType="string"/>
+								<option id="com.crt.advproject.link.memory.data.cpp.471412642" name="Global data placement" superClass="com.crt.advproject.link.memory.data.cpp" useByScannerDiscovery="false" value="" valueType="string"/>
+								<option id="com.crt.advproject.link.memory.sections.cpp.805266824" name="Extra linker script input sections" superClass="com.crt.advproject.link.memory.sections.cpp" useByScannerDiscovery="false" valueType="stringList"/>
+								<option id="com.crt.advproject.link.cpp.multicore.master.userobjs.1380670616" name="Slave Objects (not visible)" superClass="com.crt.advproject.link.cpp.multicore.master.userobjs" useByScannerDiscovery="false" valueType="userObjs"/>
+								<option id="com.crt.advproject.link.cpp.arch.517860999" name="Architecture" superClass="com.crt.advproject.link.cpp.arch" useByScannerDiscovery="false" value="com.crt.advproject.link.cpp.target.cm4" valueType="enumerated"/>
+								<option id="gnu.cpp.link.option.nostart.1135251935" name="Do not use standard start files (-nostartfiles)" superClass="gnu.cpp.link.option.nostart" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.link.option.nodeflibs.776501125" name="Do not use default libraries (-nodefaultlibs)" superClass="gnu.cpp.link.option.nodeflibs" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.link.option.nostdlibs.1084887881" name="No startup or default libs (-nostdlib)" superClass="gnu.cpp.link.option.nostdlibs" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="gnu.cpp.link.option.strip.443049668" name="Omit all symbol information (-s)" superClass="gnu.cpp.link.option.strip" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.link.option.libs.960375735" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.link.option.paths.509881994" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.link.option.flags.210308480" name="Linker flags" superClass="gnu.cpp.link.option.flags" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.link.option.other.953056060" name="Other options (-Xlinker [option])" superClass="gnu.cpp.link.option.other" useByScannerDiscovery="false" valueType="stringList">
 									<listOptionValue builtIn="false" value="-Map=&quot;${BuildArtifactFileBaseName}.map&quot;"/>
 									<listOptionValue builtIn="false" value="--gc-sections"/>
 									<listOptionValue builtIn="false" value="-print-memory-usage"/>
 									<listOptionValue builtIn="false" value="--sort-section=alignment"/>
 								</option>
-								<option id="gnu.cpp.link.option.userobjs.1820014684" name="Other objects" superClass="gnu.cpp.link.option.userobjs"/>
-								<option id="gnu.cpp.link.option.shared.879668536" name="Shared (-shared)" superClass="gnu.cpp.link.option.shared"/>
-								<option id="gnu.cpp.link.option.soname.1308618073" name="Shared object name (-Wl,-soname=)" superClass="gnu.cpp.link.option.soname"/>
-								<option id="gnu.cpp.link.option.implname.648304990" name="Import Library name (-Wl,--out-implib=)" superClass="gnu.cpp.link.option.implname"/>
-								<option id="gnu.cpp.link.option.defname.1074425101" name="DEF file name (-Wl,--output-def=)" superClass="gnu.cpp.link.option.defname"/>
-								<option id="gnu.cpp.link.option.debugging.prof.474096455" name="Generate prof information (-p)" superClass="gnu.cpp.link.option.debugging.prof"/>
-								<option id="gnu.cpp.link.option.debugging.gprof.915438670" name="Generate gprof information (-pg)" superClass="gnu.cpp.link.option.debugging.gprof"/>
-								<option id="gnu.cpp.link.option.debugging.codecov.581525134" name="Generate gcov information (-ftest-coverage -fprofile-arcs)" superClass="gnu.cpp.link.option.debugging.codecov"/>
-								<option id="com.crt.advproject.link.cpp.lto.226910678" name="Enable Link-time optimization (-flto)" superClass="com.crt.advproject.link.cpp.lto"/>
-								<option id="com.crt.advproject.link.cpp.lto.optmization.level.6980092" name="Link-time optimization level" superClass="com.crt.advproject.link.cpp.lto.optmization.level"/>
-								<option id="com.crt.advproject.link.cpp.fpu.299911015" name="Floating point" superClass="com.crt.advproject.link.cpp.fpu" value="com.crt.advproject.link.cpp.fpu.fpv4.hard" valueType="enumerated"/>
-								<option id="com.crt.advproject.link.cpp.manage.1713785945" name="Manage linker script" superClass="com.crt.advproject.link.cpp.manage" value="true" valueType="boolean"/>
-								<option id="com.crt.advproject.link.cpp.script.711522017" name="Linker script" superClass="com.crt.advproject.link.cpp.script" value="ece595_project_1_Debug.ld" valueType="string"/>
-								<option id="com.crt.advproject.link.cpp.scriptdir.430345948" name="Script path" superClass="com.crt.advproject.link.cpp.scriptdir"/>
-								<option id="com.crt.advproject.link.cpp.crpenable.248166301" name="Enable automatic placement of Code Read Protection field in image" superClass="com.crt.advproject.link.cpp.crpenable"/>
-								<option id="com.crt.advproject.link.cpp.flashconfigenable.303014701" name="Enable automatic placement of Flash Configuration field in image" superClass="com.crt.advproject.link.cpp.flashconfigenable" value="true" valueType="boolean"/>
-								<option id="com.crt.advproject.link.cpp.ecrp.1934614693" name="Enhanced CRP" superClass="com.crt.advproject.link.cpp.ecrp"/>
-								<option id="com.crt.advproject.link.cpp.hdrlib.1427314637" name="Library" superClass="com.crt.advproject.link.cpp.hdrlib" value="com.crt.advproject.cpp.link.hdrlib.newlibnano.semihost" valueType="enumerated"/>
-								<option id="com.crt.advproject.link.cpp.nanofloat.1227451048" name="Enable printf float " superClass="com.crt.advproject.link.cpp.nanofloat"/>
-								<option id="com.crt.advproject.link.cpp.nanofloat.scanf.1268535274" name="Enable scanf float " superClass="com.crt.advproject.link.cpp.nanofloat.scanf"/>
-								<option id="com.crt.advproject.link.cpp.toram.2121262680" name="Link application to RAM" superClass="com.crt.advproject.link.cpp.toram"/>
-								<option defaultValue="com.crt.advproject.heapAndStack.mcuXpressoStyle.cpp" id="com.crt.advproject.link.memory.heapAndStack.style.cpp.1769288903" name="Heap and Stack placement" superClass="com.crt.advproject.link.memory.heapAndStack.style.cpp" valueType="enumerated"/>
-								<option id="com.crt.advproject.link.cpp.stackOffset.1427486324" name="Stack offset" superClass="com.crt.advproject.link.cpp.stackOffset"/>
-								<option id="com.crt.advproject.link.cpp.multicore.slave.1209690158" name="Multicore configuration" superClass="com.crt.advproject.link.cpp.multicore.slave"/>
-								<option id="com.crt.advproject.link.cpp.multicore.master.2056159595" name="Multicore master" superClass="com.crt.advproject.link.cpp.multicore.master"/>
-								<option id="com.crt.advproject.link.cpp.multicore.empty.1784005342" name="No Multicore options for this project" superClass="com.crt.advproject.link.cpp.multicore.empty"/>
-								<option id="com.crt.advproject.link.cpp.config.254311257" name="Obsolete (Config)" superClass="com.crt.advproject.link.cpp.config"/>
-								<option id="com.crt.advproject.link.cpp.store.853657752" name="Obsolete (Store)" superClass="com.crt.advproject.link.cpp.store"/>
-								<option id="com.crt.advproject.link.cpp.securestate.667575739" name="TrustZone Project Type" superClass="com.crt.advproject.link.cpp.securestate"/>
+								<option id="gnu.cpp.link.option.userobjs.1820014684" name="Other objects" superClass="gnu.cpp.link.option.userobjs" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.link.option.shared.879668536" name="Shared (-shared)" superClass="gnu.cpp.link.option.shared" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.link.option.soname.1308618073" name="Shared object name (-Wl,-soname=)" superClass="gnu.cpp.link.option.soname" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.link.option.implname.648304990" name="Import Library name (-Wl,--out-implib=)" superClass="gnu.cpp.link.option.implname" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.link.option.defname.1074425101" name="DEF file name (-Wl,--output-def=)" superClass="gnu.cpp.link.option.defname" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.link.option.debugging.prof.474096455" name="Generate prof information (-p)" superClass="gnu.cpp.link.option.debugging.prof" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.link.option.debugging.gprof.915438670" name="Generate gprof information (-pg)" superClass="gnu.cpp.link.option.debugging.gprof" useByScannerDiscovery="false"/>
+								<option id="gnu.cpp.link.option.debugging.codecov.581525134" name="Generate gcov information (-ftest-coverage -fprofile-arcs)" superClass="gnu.cpp.link.option.debugging.codecov" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.link.cpp.lto.226910678" name="Enable Link-time optimization (-flto)" superClass="com.crt.advproject.link.cpp.lto" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.link.cpp.lto.optmization.level.6980092" name="Link-time optimization level" superClass="com.crt.advproject.link.cpp.lto.optmization.level" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.link.cpp.fpu.299911015" name="Floating point" superClass="com.crt.advproject.link.cpp.fpu" useByScannerDiscovery="false" value="com.crt.advproject.link.cpp.fpu.fpv4.hard" valueType="enumerated"/>
+								<option id="com.crt.advproject.link.cpp.manage.1713785945" name="Manage linker script" superClass="com.crt.advproject.link.cpp.manage" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="com.crt.advproject.link.cpp.script.711522017" name="Linker script" superClass="com.crt.advproject.link.cpp.script" useByScannerDiscovery="false" value="ece595_project_1_Debug.ld" valueType="string"/>
+								<option id="com.crt.advproject.link.cpp.scriptdir.430345948" name="Script path" superClass="com.crt.advproject.link.cpp.scriptdir" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.link.cpp.crpenable.248166301" name="Enable automatic placement of Code Read Protection field in image" superClass="com.crt.advproject.link.cpp.crpenable" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.link.cpp.flashconfigenable.303014701" name="Enable automatic placement of Flash Configuration field in image" superClass="com.crt.advproject.link.cpp.flashconfigenable" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="com.crt.advproject.link.cpp.ecrp.1934614693" name="Enhanced CRP" superClass="com.crt.advproject.link.cpp.ecrp" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.link.cpp.hdrlib.1427314637" name="Library" superClass="com.crt.advproject.link.cpp.hdrlib" useByScannerDiscovery="false" value="com.crt.advproject.cpp.link.hdrlib.newlibnano.semihost" valueType="enumerated"/>
+								<option id="com.crt.advproject.link.cpp.nanofloat.1227451048" name="Enable printf float " superClass="com.crt.advproject.link.cpp.nanofloat" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.link.cpp.nanofloat.scanf.1268535274" name="Enable scanf float " superClass="com.crt.advproject.link.cpp.nanofloat.scanf" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.link.cpp.toram.2121262680" name="Link application to RAM" superClass="com.crt.advproject.link.cpp.toram" useByScannerDiscovery="false"/>
+								<option defaultValue="com.crt.advproject.heapAndStack.mcuXpressoStyle.cpp" id="com.crt.advproject.link.memory.heapAndStack.style.cpp.1769288903" name="Heap and Stack placement" superClass="com.crt.advproject.link.memory.heapAndStack.style.cpp" useByScannerDiscovery="false" valueType="enumerated"/>
+								<option id="com.crt.advproject.link.cpp.stackOffset.1427486324" name="Stack offset" superClass="com.crt.advproject.link.cpp.stackOffset" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.link.cpp.multicore.slave.1209690158" name="Multicore configuration" superClass="com.crt.advproject.link.cpp.multicore.slave" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.link.cpp.multicore.master.2056159595" name="Multicore master" superClass="com.crt.advproject.link.cpp.multicore.master" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.link.cpp.multicore.empty.1784005342" name="No Multicore options for this project" superClass="com.crt.advproject.link.cpp.multicore.empty" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.link.cpp.config.254311257" name="Obsolete (Config)" superClass="com.crt.advproject.link.cpp.config" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.link.cpp.store.853657752" name="Obsolete (Store)" superClass="com.crt.advproject.link.cpp.store" useByScannerDiscovery="false"/>
+								<option id="com.crt.advproject.link.cpp.securestate.667575739" name="TrustZone Project Type" superClass="com.crt.advproject.link.cpp.securestate" useByScannerDiscovery="false"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1586696711" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
@@ -271,18 +286,35 @@
 								<option id="com.crt.advproject.link.securestate.2099567271" name="TrustZone Project Type" superClass="com.crt.advproject.link.securestate"/>
 							</tool>
 							<tool id="com.crt.advproject.tool.debug.debug.1350299132" name="MCU Debugger" superClass="com.crt.advproject.tool.debug.debug">
-								<option id="com.crt.advproject.linkserver.debug.prevent.debug.1319030279" name="Prevent Debugging" superClass="com.crt.advproject.linkserver.debug.prevent.debug"/>
+								<option id="com.crt.advproject.linkserver.debug.prevent.debug.1319030279" name="Prevent Debugging" superClass="com.crt.advproject.linkserver.debug.prevent.debug" useByScannerDiscovery="false"/>
 							</tool>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="com.crt.advproject.config.exe.debug.284417745.369331299" name="io_abstraction.cpp" rcbsApplicability="disable" resourcePath="source/io_abstraction.cpp" toolsToInvoke="com.crt.advproject.cpp.exe.debug.1071160978.575698689">
+						<tool id="com.crt.advproject.cpp.exe.debug.1071160978.575698689" name="MCU C++ Compiler" superClass="com.crt.advproject.cpp.exe.debug.955860833">
+							<option id="gnu.cpp.compiler.option.include.paths.381223704" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+								<listOptionValue builtIn="false" value="../board"/>
+								<listOptionValue builtIn="false" value="../source"/>
+								<listOptionValue builtIn="false" value="../amazon-freertos/include"/>
+								<listOptionValue builtIn="false" value="../amazon-freertos/FreeRTOS/portable"/>
+								<listOptionValue builtIn="false" value="../drivers"/>
+								<listOptionValue builtIn="false" value="../device"/>
+								<listOptionValue builtIn="false" value="../CMSIS"/>
+								<listOptionValue builtIn="false" value="../drivers/freertos"/>
+								<listOptionValue builtIn="false" value="../source/hw_abstraction"/>
+							</option>
+							<inputType id="com.crt.advproject.compiler.cpp.input.1014306262" superClass="com.crt.advproject.compiler.cpp.input"/>
+						</tool>
+					</fileInfo>
 					<sourceEntries>
-						<entry flags="LOCAL|VALUE_WORKSPACE_PATH" kind="sourcePath" name="startup"/>
-						<entry excluding="FreeRTOS/portable/heap_1.c|FreeRTOS/portable/heap_2.c|FreeRTOS/portable/heap_3.c|FreeRTOS/portable/heap_5.c" flags="LOCAL|VALUE_WORKSPACE_PATH" kind="sourcePath" name="amazon-freertos"/>
 						<entry flags="LOCAL|VALUE_WORKSPACE_PATH" kind="sourcePath" name="CMSIS"/>
+						<entry excluding="FreeRTOS/portable/heap_1.c|FreeRTOS/portable/heap_2.c|FreeRTOS/portable/heap_3.c|FreeRTOS/portable/heap_5.c" flags="LOCAL|VALUE_WORKSPACE_PATH" kind="sourcePath" name="amazon-freertos"/>
 						<entry flags="LOCAL|VALUE_WORKSPACE_PATH" kind="sourcePath" name="source"/>
 						<entry flags="LOCAL|VALUE_WORKSPACE_PATH" kind="sourcePath" name="drivers"/>
 						<entry flags="LOCAL|VALUE_WORKSPACE_PATH" kind="sourcePath" name="device"/>
 						<entry flags="LOCAL|VALUE_WORKSPACE_PATH" kind="sourcePath" name="board"/>
+						<entry excluding="hw_abstraction" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="source"/>
+						<entry flags="LOCAL|VALUE_WORKSPACE_PATH" kind="sourcePath" name="startup"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -328,15 +360,24 @@
 								</option>
 								<option id="gnu.cpp.compiler.option.preprocessor.undef.1187218700" name="Undefined symbols (-U)" superClass="gnu.cpp.compiler.option.preprocessor.undef"/>
 								<option id="gnu.cpp.compiler.option.include.paths.1164314233" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="../board"/>
+									<listOptionValue builtIn="false" value="../CMSIS"/>
 									<listOptionValue builtIn="false" value="../source"/>
-									<listOptionValue builtIn="false" value="../"/>
+									<listOptionValue builtIn="false" value="../drivers/freertos"/>
+									<listOptionValue builtIn="false" value="../drivers"/>
+									<listOptionValue builtIn="false" value="../component/serial_manager"/>
 									<listOptionValue builtIn="false" value="../amazon-freertos/include"/>
 									<listOptionValue builtIn="false" value="../amazon-freertos/FreeRTOS/portable"/>
-									<listOptionValue builtIn="false" value="../drivers"/>
+									<listOptionValue builtIn="false" value="../utilities"/>
 									<listOptionValue builtIn="false" value="../device"/>
-									<listOptionValue builtIn="false" value="../CMSIS"/>
-									<listOptionValue builtIn="false" value="../drivers/freertos"/>
+									<listOptionValue builtIn="false" value="../board"/>
+									<listOptionValue builtIn="false" value="../source/hw_abstraction"/>
+									<listOptionValue builtIn="false" value="../"/>
+									<listOptionValue builtIn="false" value="c:/nxp/mcuxpressoide_10.3.0_2200/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/arm-none-eabi/include/c++/7.3.1"/>
+									<listOptionValue builtIn="false" value="c:/nxp/mcuxpressoide_10.3.0_2200/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/arm-none-eabi/include/c++/7.3.1/arm-none-eabi"/>
+									<listOptionValue builtIn="false" value="c:/nxp/mcuxpressoide_10.3.0_2200/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/arm-none-eabi/include/c++/7.3.1/backward"/>
+									<listOptionValue builtIn="false" value="c:/nxp/mcuxpressoide_10.3.0_2200/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/lib/gcc/arm-none-eabi/7.3.1/include"/>
+									<listOptionValue builtIn="false" value="c:/nxp/mcuxpressoide_10.3.0_2200/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/lib/gcc/arm-none-eabi/7.3.1/include-fixed"/>
+									<listOptionValue builtIn="false" value="c:/nxp/mcuxpressoide_10.3.0_2200/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/arm-none-eabi/include"/>
 								</option>
 								<option id="gnu.cpp.compiler.option.include.files.780151452" name="Include files (-include)" superClass="gnu.cpp.compiler.option.include.files"/>
 								<option id="gnu.cpp.compiler.option.optimization.flags.1776840241" name="Other optimization flags" superClass="gnu.cpp.compiler.option.optimization.flags" value="-fno-common" valueType="string"/>
@@ -387,15 +428,24 @@
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.undef.symbol.575247717" name="Undefined symbols (-U)" superClass="gnu.c.compiler.option.preprocessor.undef.symbol"/>
 								<option id="gnu.c.compiler.option.include.paths.429215013" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="../board"/>
+									<listOptionValue builtIn="false" value="../CMSIS"/>
 									<listOptionValue builtIn="false" value="../source"/>
-									<listOptionValue builtIn="false" value="../"/>
+									<listOptionValue builtIn="false" value="../drivers/freertos"/>
+									<listOptionValue builtIn="false" value="../drivers"/>
+									<listOptionValue builtIn="false" value="../component/serial_manager"/>
 									<listOptionValue builtIn="false" value="../amazon-freertos/include"/>
 									<listOptionValue builtIn="false" value="../amazon-freertos/FreeRTOS/portable"/>
-									<listOptionValue builtIn="false" value="../drivers"/>
+									<listOptionValue builtIn="false" value="../utilities"/>
 									<listOptionValue builtIn="false" value="../device"/>
-									<listOptionValue builtIn="false" value="../CMSIS"/>
-									<listOptionValue builtIn="false" value="../drivers/freertos"/>
+									<listOptionValue builtIn="false" value="../board"/>
+									<listOptionValue builtIn="false" value="../source/hw_abstraction"/>
+									<listOptionValue builtIn="false" value="../"/>
+									<listOptionValue builtIn="false" value="c:/nxp/mcuxpressoide_10.3.0_2200/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/arm-none-eabi/include/c++/7.3.1"/>
+									<listOptionValue builtIn="false" value="c:/nxp/mcuxpressoide_10.3.0_2200/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/arm-none-eabi/include/c++/7.3.1/arm-none-eabi"/>
+									<listOptionValue builtIn="false" value="c:/nxp/mcuxpressoide_10.3.0_2200/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/arm-none-eabi/include/c++/7.3.1/backward"/>
+									<listOptionValue builtIn="false" value="c:/nxp/mcuxpressoide_10.3.0_2200/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/lib/gcc/arm-none-eabi/7.3.1/include"/>
+									<listOptionValue builtIn="false" value="c:/nxp/mcuxpressoide_10.3.0_2200/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/lib/gcc/arm-none-eabi/7.3.1/include-fixed"/>
+									<listOptionValue builtIn="false" value="c:/nxp/mcuxpressoide_10.3.0_2200/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/arm-none-eabi/include"/>
 								</option>
 								<option id="gnu.c.compiler.option.include.files.1480791598" name="Include files (-include)" superClass="gnu.c.compiler.option.include.files"/>
 								<option id="gnu.c.compiler.option.optimization.flags.281971554" name="Other optimization flags" superClass="gnu.c.compiler.option.optimization.flags" value="-fno-common" valueType="string"/>
@@ -431,15 +481,24 @@
 								<option id="com.crt.advproject.gas.arch.1009809376" name="Architecture" superClass="com.crt.advproject.gas.arch" value="com.crt.advproject.gas.target.cm4" valueType="enumerated"/>
 								<option id="gnu.both.asm.option.flags.crt.845985486" name="Assembler flags" superClass="gnu.both.asm.option.flags.crt"/>
 								<option id="gnu.both.asm.option.include.paths.978128077" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="../board"/>
+									<listOptionValue builtIn="false" value="../CMSIS"/>
 									<listOptionValue builtIn="false" value="../source"/>
-									<listOptionValue builtIn="false" value="../"/>
+									<listOptionValue builtIn="false" value="../drivers/freertos"/>
+									<listOptionValue builtIn="false" value="../drivers"/>
+									<listOptionValue builtIn="false" value="../component/serial_manager"/>
 									<listOptionValue builtIn="false" value="../amazon-freertos/include"/>
 									<listOptionValue builtIn="false" value="../amazon-freertos/FreeRTOS/portable"/>
-									<listOptionValue builtIn="false" value="../drivers"/>
+									<listOptionValue builtIn="false" value="../utilities"/>
 									<listOptionValue builtIn="false" value="../device"/>
-									<listOptionValue builtIn="false" value="../CMSIS"/>
-									<listOptionValue builtIn="false" value="../drivers/freertos"/>
+									<listOptionValue builtIn="false" value="../board"/>
+									<listOptionValue builtIn="false" value="../source/hw_abstraction"/>
+									<listOptionValue builtIn="false" value="../"/>
+									<listOptionValue builtIn="false" value="c:/nxp/mcuxpressoide_10.3.0_2200/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/arm-none-eabi/include/c++/7.3.1"/>
+									<listOptionValue builtIn="false" value="c:/nxp/mcuxpressoide_10.3.0_2200/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/arm-none-eabi/include/c++/7.3.1/arm-none-eabi"/>
+									<listOptionValue builtIn="false" value="c:/nxp/mcuxpressoide_10.3.0_2200/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/arm-none-eabi/include/c++/7.3.1/backward"/>
+									<listOptionValue builtIn="false" value="c:/nxp/mcuxpressoide_10.3.0_2200/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/lib/gcc/arm-none-eabi/7.3.1/include"/>
+									<listOptionValue builtIn="false" value="c:/nxp/mcuxpressoide_10.3.0_2200/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/lib/gcc/arm-none-eabi/7.3.1/include-fixed"/>
+									<listOptionValue builtIn="false" value="c:/nxp/mcuxpressoide_10.3.0_2200/ide/plugins/com.nxp.mcuxpresso.tools.win32_10.3.0.201811011841/tools/arm-none-eabi/include"/>
 								</option>
 								<option id="gnu.both.asm.option.warnings.nowarn.658753851" name="Suppress warnings (-W)" superClass="gnu.both.asm.option.warnings.nowarn"/>
 								<option id="gnu.both.asm.option.version.844334405" name="Announce version (-v)" superClass="gnu.both.asm.option.version"/>
@@ -556,13 +615,15 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry flags="LOCAL|VALUE_WORKSPACE_PATH" kind="sourcePath" name="startup"/>
-						<entry excluding="FreeRTOS/portable/heap_1.c|FreeRTOS/portable/heap_2.c|FreeRTOS/portable/heap_3.c|FreeRTOS/portable/heap_5.c" flags="LOCAL|VALUE_WORKSPACE_PATH" kind="sourcePath" name="amazon-freertos"/>
 						<entry flags="LOCAL|VALUE_WORKSPACE_PATH" kind="sourcePath" name="CMSIS"/>
+						<entry excluding="FreeRTOS/portable/heap_1.c|FreeRTOS/portable/heap_2.c|FreeRTOS/portable/heap_3.c|FreeRTOS/portable/heap_5.c" flags="LOCAL|VALUE_WORKSPACE_PATH" kind="sourcePath" name="amazon-freertos"/>
 						<entry flags="LOCAL|VALUE_WORKSPACE_PATH" kind="sourcePath" name="source"/>
 						<entry flags="LOCAL|VALUE_WORKSPACE_PATH" kind="sourcePath" name="drivers"/>
 						<entry flags="LOCAL|VALUE_WORKSPACE_PATH" kind="sourcePath" name="device"/>
 						<entry flags="LOCAL|VALUE_WORKSPACE_PATH" kind="sourcePath" name="board"/>
+						<entry excluding="hw_abstraction" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="source"/>
+						<entry flags="LOCAL|VALUE_WORKSPACE_PATH" kind="sourcePath" name="startup"/>
+						<entry excluding="hw_abstraction" flags="LOCAL|VALUE_WORKSPACE_PATH" kind="sourcePath" name="source"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

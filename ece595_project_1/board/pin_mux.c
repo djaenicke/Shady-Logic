@@ -41,10 +41,24 @@ product: Pins v4.0
 /* This is a template for board specific configuration created by MCUXpresso IDE Project Wizard.*/
 
 #include "pin_mux.h"
+#include "fsl_port.h"
+#include "io_abstraction.h"
 
 /**
  * @brief Set up and initialize all required blocks and functions related to the board hardware.
  */
-void BOARD_InitBootPins(void) {
-	/* The user initialization should be placed here */
+void BOARD_InitBootPins(void)
+{
+    uint8_t i;
+
+    /* Enable Port Clock Gate Controls */
+    SIM->SCGC5 |= SIM_SCGC5_PORTA(1);
+    SIM->SCGC5 |= SIM_SCGC5_PORTB(1);
+    SIM->SCGC5 |= SIM_SCGC5_PORTC(1);
+
+    for (i=0; i<NUM_IO; i++)
+    {
+        PORT_SetPinMux(Pin_Cfgs[i].pbase, Pin_Cfgs[i].pin, Pin_Cfgs[i].mux);
+    }
 }
+
