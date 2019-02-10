@@ -23,4 +23,5 @@ class Motor
     void Reset_Driver(void);
     void Rotate(float degrees);
     void Zero_Position(void);
+    float Get_Position(void);
 };

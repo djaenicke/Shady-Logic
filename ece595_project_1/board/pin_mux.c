@@ -49,6 +49,7 @@ product: Pins v4.0
  */
 void BOARD_InitBootPins(void)
 {
+    port_interrupt_t p_int_cfg;
     uint8_t i;
 
     /* Enable Port Clock Gate Controls */
@@ -60,5 +61,20 @@ void BOARD_InitBootPins(void)
     {
         PORT_SetPinMux(Pin_Cfgs[i].pbase, Pin_Cfgs[i].pin, Pin_Cfgs[i].mux);
     }
+
+    /* Enable interrupts for SW2 and SW3 */
+    p_int_cfg = kPORT_InterruptRisingEdge;
+    PORT_SetPinInterruptConfig(Pin_Cfgs[SW_2].pbase, Pin_Cfgs[SW_2].pin, p_int_cfg);
+    PORT_SetPinInterruptConfig(Pin_Cfgs[SW_3].pbase, Pin_Cfgs[SW_3].pin, p_int_cfg);
+}
+
+void BOARD_Enable_SW_Interrupts(void)
+{
+    /* Enable switch interrupts */
+    PORT_ClearPinsInterruptFlags(PORTC, 0xFFFFFFFF);
+    NVIC_EnableIRQ(PORTC_IRQn);
+
+    PORT_ClearPinsInterruptFlags(PORTA, 0xFFFFFFFF);
+    NVIC_EnableIRQ(PORTA_IRQn);
 }
 

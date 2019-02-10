@@ -9,7 +9,7 @@
 #include "app.h"
 #include "assert.h"
 #include "io_abstraction.h"
-#include "motor_controller.h"
+#include "blinds_control.h"
 
 typedef struct Task_Cfg_Tag
 {
@@ -29,7 +29,7 @@ const Task_Cfg_T Task_Cfg_Table[NUM_TASKS] =
 {
     /* Function,          Name,             Stack Size,  Priority */
     {Init_App_Task,       "Init_App",       100,         configMAX_PRIORITIES - 1},
-    {Blinds_Control_Task, "Blinds Control", 100,         configMAX_PRIORITIES - 2}
+    {Blinds_Control_Task, "Blinds Control", 1000,        configMAX_PRIORITIES - 2}
 };
 
 /* Local function declarations */
@@ -65,6 +65,7 @@ static void Init_App_Task(void *pvParameters)
     while(1)
     {
         printf("Initializing application...\r\n");
+        Init_Blinds_Control();
         vTaskSuspend(NULL);
     }
 }
@@ -73,7 +74,7 @@ static void Blinds_Control_Task(void *pvParameters)
 {
     while(1)
     {
-        printf("Running Blinds Control...\r\n");
-        vTaskSuspend(NULL);
+        Ctrl_State_Machine();
+        vTaskDelay(5);
     }
 }

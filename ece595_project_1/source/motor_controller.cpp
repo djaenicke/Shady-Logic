@@ -77,13 +77,19 @@ void Motor::Rotate(float degrees)
 {
     float steps_needed;
     uint16_t i;
+    int8_t sign = 0;
 
-    if (degrees > 0)
+    if (degrees > 0.0f)
+    {
         Set_Direction(CW);
+        sign = 1;
+    }
     else
+    {
         Set_Direction(CCW);
+        sign = -1;
+    }
 
-    rel_position += degrees;
     steps_needed = abs(degrees)/DEG_PER_STEP;
 
     for (i=0; i<=round(steps_needed); i++)
@@ -91,12 +97,18 @@ void Motor::Rotate(float degrees)
         Set_GPIO(MOTOR_STEP_CTRL, HIGH);
         Delay(STEP_DELAY_CNT);
         Set_GPIO(MOTOR_STEP_CTRL, LOW);
+        rel_position += sign * DEG_PER_STEP;
     }
 }
 
 void Motor::Zero_Position(void)
 {
     rel_position = 0.0f;
+}
+
+float Motor::Get_Position(void)
+{
+    return(rel_position);
 }
 
 void Delay(uint32_t delay_cnt)

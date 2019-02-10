@@ -15,7 +15,9 @@ const Pin_Cfg_T Pin_Cfgs[NUM_IO] =
     {PORTC, GPIOC,  3, kPORT_MuxAsGpio, kGPIO_DigitalOutput, HIGH}, /* MOTOR_SLEEP     - Active Low       */
     {PORTC, GPIOC,  5, kPORT_MuxAsGpio, kGPIO_DigitalOutput, LOW},  /* MOTOR_DRV_EN    */
     {PORTC, GPIOC,  7, kPORT_MuxAsGpio, kGPIO_DigitalOutput, HIGH}, /* MOTOR_DRV_RESET - Active Low       */
-    {PORTB, GPIOB, 21, kPORT_MuxAsGpio, kGPIO_DigitalOutput, HIGH}  /* BLUE_LED        - Active Low       */
+    {PORTB, GPIOB, 21, kPORT_MuxAsGpio, kGPIO_DigitalOutput, HIGH}, /* BLUE_LED        - Active Low       */
+    {PORTC, GPIOC,  6, kPORT_MuxAsGpio, kGPIO_DigitalInput,  NA},   /* SW_2            */
+    {PORTA, GPIOA,  4, kPORT_MuxAsGpio, kGPIO_DigitalInput,  NA},   /* SW_3            */
 };
 
 void Set_GPIO(IO_Map_T gpio, GPIO_State_T state)

@@ -46,6 +46,7 @@ extern "C" {
  * @brief 	Initialize board pins.
  */
 void BOARD_InitBootPins(void);
+void BOARD_Enable_SW_Interrupts(void);
 
 #if defined(__cplusplus)
 }
