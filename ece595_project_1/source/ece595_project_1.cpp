@@ -38,41 +38,17 @@
 #include "pin_mux.h"
 #include "clock_config.h"
 #include "MK64F12.h"
+#include "app.h"
 
-#include "io_abstraction.h"
-#include "motor_controller.h"
-
-/* TODO: insert other definitions and declarations here. */
-
-static Motor Stepper_Motor;
-
-/*
- * @brief   Application entry point.
- */
-int main(void) {
+int main(void)
+{
   	/* Init board hardware. */
     BOARD_InitBootPins();
     BOARD_InitBootClocks();
     BOARD_InitBootPeripherals();
 
-    printf("Hello World\n");
-
-    /* Force the counter to be placed into memory. */
-    volatile static int i = 0 ;
-    /* Enter an infinite loop, just incrementing a counter. */
-
-    Set_GPIO(BLUE_LED, LOW);
-
-    Stepper_Motor.Enable_Driver();
-    Stepper_Motor.Rotate(360.0f);
-    Stepper_Motor.Rotate(-360.0f);
-    Stepper_Motor.Sleep();
-
-
-    while(1)
-    {
-        i++;
-    }
+    Start_OS();
 
     return 0;
 }
+
