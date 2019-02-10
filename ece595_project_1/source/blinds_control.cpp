@@ -1,9 +1,14 @@
 #include <stdio.h>
+#include <string.h>
+
 #include "blinds_control.h"
 #include "motor_controller.h"
 #include "fsl_port.h"
 #include "pin_mux.h"
 #include "MK64F12.h"
+#include "fsl_uart_freertos.h"
+#include "fsl_uart.h"
+#include "fsl_clock.h"
 
 typedef enum
 {
@@ -16,14 +21,31 @@ typedef enum
     IDLE
 } Control_State_T;
 
-static Control_State_T Ctrl_State;
+
+uint8_t UART_RX_Buffer[4];
+char UART_TX_Buffer[128];
+
+uart_rtos_handle_t Handle;
+struct _uart_handle T_Handle;
+
+uart_rtos_config_t uart_config = {
+    UART0,
+    0,
+    115200,
+    kUART_ParityDisabled,
+    kUART_OneStopBit,
+    UART_RX_Buffer,
+    sizeof(UART_RX_Buffer)
+};
+
+static volatile Control_State_T Ctrl_State;
 static Motor Stepper_Motor;
 
 static float Closed_Position;
 static float Open_Position;
 
-static bool Print_Closed_Pos_Info = false;
-static bool Print_Open_Pos_Info = false;
+static volatile bool Print_Closed_Pos_Info = false;
+static volatile bool Print_Open_Pos_Info = false;
 
 void Run_Position_Learning(void);
 
@@ -37,7 +59,7 @@ void PORTA_IRQHandler(void)
 
 void PORTC_IRQHandler(void)
 {
-    if (SEEK_OPEN_POSITION == Position_Learn_State)
+    if (SEEK_OPEN_POSITION == Ctrl_State)
     {
         Ctrl_State = POSITION_LEARNED;
     }
@@ -51,6 +73,12 @@ void Init_Blinds_Control(void)
     Ctrl_State = POSITION_NOT_LEARNED;
     Stepper_Motor.Enable_Driver();
     BOARD_Enable_SW_Interrupts();
+
+    /* Initialize a UART instance */
+    uart_config.srcclk = CLOCK_GetFreq(UART0_CLK_SRC);
+    UART_RTOS_Init(&Handle, &T_Handle, &uart_config);
+    sprintf(UART_TX_Buffer, "Blinds controller initialized.\r\n\n");
+    UART_RTOS_Send(&Handle, (uint8_t *)UART_TX_Buffer, strlen(UART_TX_Buffer));
 }
 
 void Run_Position_Learning(void)
@@ -71,7 +99,7 @@ void Run_Position_Learning(void)
             break;
         default:
             /* Restart position learning procedure */
-            Ctrl_State = NOT_STARTED;
+            Ctrl_State = POSITION_NOT_LEARNED;
             break;
     }
 }
@@ -86,7 +114,8 @@ void Ctrl_State_Machine(void)
         case REQUEST_CLOSED_POSITION:
             if (Print_Closed_Pos_Info)
             {
-                printf("Place blinds in fully closed position and press SW3 when finished");
+                sprintf(UART_TX_Buffer, "Place blinds in fully closed position and press SW3 when finished.\r\n\n");
+                UART_RTOS_Send(&Handle, (uint8_t *)UART_TX_Buffer, strlen(UART_TX_Buffer));
                 Stepper_Motor.Zero_Position();
                 Closed_Position = Stepper_Motor.Get_Position();
                 Print_Closed_Pos_Info = false;
@@ -95,13 +124,15 @@ void Ctrl_State_Machine(void)
         case SEEK_OPEN_POSITION:
             if (Print_Open_Pos_Info)
             {
-                printf("Closed position learned!");
-                printf("Press SW3 to begin seeking for open position");
-                printf("When fully open, press SW2 to finish the procedure.");
+                sprintf(UART_TX_Buffer, "Closed position learned!\r\nPress SW3 to begin seeking for open position.\r\n"
+                                         "When fully open, press SW2 to finish the procedure.\r\n\n");
+                UART_RTOS_Send(&Handle, (uint8_t *)UART_TX_Buffer, strlen(UART_TX_Buffer));
                 Print_Open_Pos_Info = false;
             }
             break;
         case POSITION_LEARNED:
+            sprintf(UART_TX_Buffer, "Position learned!\r\n");
+            UART_RTOS_Send(&Handle, (uint8_t *)UART_TX_Buffer, strlen(UART_TX_Buffer));
             Open_Position = Stepper_Motor.Get_Position();
             Stepper_Motor.Sleep();
             Ctrl_State = IDLE;

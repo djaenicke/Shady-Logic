@@ -21,6 +21,7 @@ typedef struct Task_Cfg_Tag
 
 /* Task function declarations */
 static void Init_App_Task(void *pvParameters);
+static void UART_Task(void *pvParameters);
 static void Blinds_Control_Task(void *pvParameters);
 
 /* Task Configurations */
@@ -75,6 +76,6 @@ static void Blinds_Control_Task(void *pvParameters)
     while(1)
     {
         Ctrl_State_Machine();
-        vTaskDelay(5);
+        vTaskDelay(pdMS_TO_TICKS(1000));
     }
 }

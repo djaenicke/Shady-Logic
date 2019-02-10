@@ -44,6 +44,8 @@ product: Pins v4.0
 #include "fsl_port.h"
 #include "io_abstraction.h"
 
+#define SOPT5_UART0TXSRC_UART_TX      0x00u   /*!< UART 0 transmit data source select: UART0_TX pin */
+
 /**
  * @brief Set up and initialize all required blocks and functions related to the board hardware.
  */
@@ -66,6 +68,13 @@ void BOARD_InitBootPins(void)
     p_int_cfg = kPORT_InterruptRisingEdge;
     PORT_SetPinInterruptConfig(Pin_Cfgs[SW_2].pbase, Pin_Cfgs[SW_2].pin, p_int_cfg);
     PORT_SetPinInterruptConfig(Pin_Cfgs[SW_3].pbase, Pin_Cfgs[SW_3].pin, p_int_cfg);
+
+    SIM->SOPT5 = ((SIM->SOPT5 &
+      (~(SIM_SOPT5_UART0TXSRC_MASK)))                          /* Mask bits to zero which are setting */
+        | SIM_SOPT5_UART0TXSRC(SOPT5_UART0TXSRC_UART_TX)       /* UART 0 transmit data source select: UART0_TX pin */
+      );
+
+    NVIC_SetPriority(UART0_RX_TX_IRQn, 5);
 }
 
 void BOARD_Enable_SW_Interrupts(void)
