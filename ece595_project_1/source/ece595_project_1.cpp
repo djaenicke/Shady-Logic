@@ -40,8 +40,11 @@
 #include "MK64F12.h"
 
 #include "io_abstraction.h"
+#include "motor_controller.h"
 
 /* TODO: insert other definitions and declarations here. */
+
+static Motor Stepper_Motor;
 
 /*
  * @brief   Application entry point.
@@ -59,6 +62,12 @@ int main(void) {
     /* Enter an infinite loop, just incrementing a counter. */
 
     Set_GPIO(BLUE_LED, LOW);
+
+    Stepper_Motor.Enable_Driver();
+    Stepper_Motor.Rotate(360.0f);
+    Stepper_Motor.Rotate(-360.0f);
+    Stepper_Motor.Sleep();
+
 
     while(1)
     {

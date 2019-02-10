@@ -52,9 +52,9 @@ void BOARD_InitBootPins(void)
     uint8_t i;
 
     /* Enable Port Clock Gate Controls */
-    SIM->SCGC5 |= SIM_SCGC5_PORTA(1);
-    SIM->SCGC5 |= SIM_SCGC5_PORTB(1);
-    SIM->SCGC5 |= SIM_SCGC5_PORTC(1);
+    CLOCK_EnableClock(kCLOCK_PortA);
+    CLOCK_EnableClock(kCLOCK_PortB);
+    CLOCK_EnableClock(kCLOCK_PortC);
 
     for (i=0; i<NUM_IO; i++)
     {
