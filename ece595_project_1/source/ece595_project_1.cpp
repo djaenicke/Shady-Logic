@@ -38,32 +38,17 @@
 #include "pin_mux.h"
 #include "clock_config.h"
 #include "MK64F12.h"
+#include "app.h"
 
-#include "io_abstraction.h"
-
-/* TODO: insert other definitions and declarations here. */
-
-/*
- * @brief   Application entry point.
- */
-int main(void) {
+int main(void)
+{
   	/* Init board hardware. */
     BOARD_InitBootPins();
     BOARD_InitBootClocks();
     BOARD_InitBootPeripherals();
 
-    printf("Hello World\n");
-
-    /* Force the counter to be placed into memory. */
-    volatile static int i = 0 ;
-    /* Enter an infinite loop, just incrementing a counter. */
-
-    Set_GPIO(BLUE_LED, LOW);
-
-    while(1)
-    {
-        i++;
-    }
+    Start_OS();
 
     return 0;
 }
+

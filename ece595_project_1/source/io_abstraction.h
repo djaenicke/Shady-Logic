@@ -9,7 +9,8 @@
 typedef enum
 {
     LOW=0,
-    HIGH=1
+    HIGH=1,
+    NA
 } GPIO_State_T;
 
 typedef struct
@@ -30,6 +31,10 @@ typedef enum
     MOTOR_DRV_EN,
     MOTOR_DRV_RESET,
     BLUE_LED,
+    SW_2,
+    SW_3,
+    UART0_RX,
+    UART0_TX,
     NUM_IO /* !!! Make sure this is last */
 } IO_Map_T;
 
