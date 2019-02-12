@@ -29,7 +29,7 @@ static void Blinds_Control_Task(void *pvParameters);
 const Task_Cfg_T Task_Cfg_Table[NUM_TASKS] =
 {
     /* Function,          Name,             Stack Size,  Priority */
-    {Init_App_Task,       "Init_App",       100,         configMAX_PRIORITIES - 1},
+    {Init_App_Task,       "Init_App",       110,         configMAX_PRIORITIES - 1},
     {Blinds_Control_Task, "Blinds Control", 1000,        configMAX_PRIORITIES - 2}
 };
 
