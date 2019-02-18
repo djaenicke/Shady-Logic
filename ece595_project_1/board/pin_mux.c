@@ -59,6 +59,7 @@ void BOARD_InitBootPins(void)
     CLOCK_EnableClock(kCLOCK_PortB);
     CLOCK_EnableClock(kCLOCK_PortC);
 
+
     for (i=0; i<NUM_IO; i++)
     {
         PORT_SetPinMux(Pin_Cfgs[i].pbase, Pin_Cfgs[i].pin, Pin_Cfgs[i].mux);
@@ -69,10 +70,8 @@ void BOARD_InitBootPins(void)
     PORT_SetPinInterruptConfig(Pin_Cfgs[SW_2].pbase, Pin_Cfgs[SW_2].pin, p_int_cfg);
     PORT_SetPinInterruptConfig(Pin_Cfgs[SW_3].pbase, Pin_Cfgs[SW_3].pin, p_int_cfg);
 
-    SIM->SOPT5 = ((SIM->SOPT5 &
-      (~(SIM_SOPT5_UART0TXSRC_MASK)))                          /* Mask bits to zero which are setting */
-        | SIM_SOPT5_UART0TXSRC(SOPT5_UART0TXSRC_UART_TX)       /* UART 0 transmit data source select: UART0_TX pin */
-      );
+    CLOCK_EnableClock(kCLOCK_Uart0);
+    CLOCK_EnableClock(kCLOCK_Uart4);
 
     NVIC_SetPriority(UART0_RX_TX_IRQn, 5);
 }

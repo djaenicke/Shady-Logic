@@ -20,6 +20,8 @@ const Pin_Cfg_T Pin_Cfgs[NUM_IO] =
     {PORTA, GPIOA,  4, kPORT_MuxAsGpio, kGPIO_DigitalInput,  NA},   /* SW_3            */
     {PORTB, GPIOB, 16, kPORT_MuxAlt3,   kGPIO_DigitalInput,  NA},   /* UART0_RX        */
     {PORTB, GPIOB, 17, kPORT_MuxAlt3,   kGPIO_DigitalOutput, NA},   /* UART0_TX        */
+    {PORTC, GPIOC, 14, kPORT_MuxAlt3,   kGPIO_DigitalInput,  NA},   /* UART4_RX        */
+    {PORTC, GPIOC, 15, kPORT_MuxAlt3,   kGPIO_DigitalOutput, NA}    /* UART4_TX        */
 };
 
 void Set_GPIO(IO_Map_T gpio, GPIO_State_T state)
