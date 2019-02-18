@@ -225,7 +225,7 @@
 								<option id="com.crt.advproject.link.cpp.nanofloat.1227451048" name="Enable printf float " superClass="com.crt.advproject.link.cpp.nanofloat" useByScannerDiscovery="false"/>
 								<option id="com.crt.advproject.link.cpp.nanofloat.scanf.1268535274" name="Enable scanf float " superClass="com.crt.advproject.link.cpp.nanofloat.scanf" useByScannerDiscovery="false"/>
 								<option id="com.crt.advproject.link.cpp.toram.2121262680" name="Link application to RAM" superClass="com.crt.advproject.link.cpp.toram" useByScannerDiscovery="false"/>
-								<option defaultValue="com.crt.advproject.heapAndStack.mcuXpressoStyle.cpp" id="com.crt.advproject.link.memory.heapAndStack.style.cpp.1769288903" name="Heap and Stack placement" superClass="com.crt.advproject.link.memory.heapAndStack.style.cpp" useByScannerDiscovery="false" valueType="enumerated"/>
+								<option defaultValue="com.crt.advproject.heapAndStack.mcuXpressoStyle.cpp" id="com.crt.advproject.link.memory.heapAndStack.style.cpp.1769288903" name="Heap and Stack placement" superClass="com.crt.advproject.link.memory.heapAndStack.style.cpp" useByScannerDiscovery="false" value="Default" valueType="enumerated"/>
 								<option id="com.crt.advproject.link.cpp.stackOffset.1427486324" name="Stack offset" superClass="com.crt.advproject.link.cpp.stackOffset" useByScannerDiscovery="false"/>
 								<option id="com.crt.advproject.link.cpp.multicore.slave.1209690158" name="Multicore configuration" superClass="com.crt.advproject.link.cpp.multicore.slave" useByScannerDiscovery="false"/>
 								<option id="com.crt.advproject.link.cpp.multicore.master.2056159595" name="Multicore master" superClass="com.crt.advproject.link.cpp.multicore.master" useByScannerDiscovery="false"/>
@@ -551,7 +551,7 @@
 								<option id="com.crt.advproject.link.cpp.nanofloat.1571225178" name="Enable printf float " superClass="com.crt.advproject.link.cpp.nanofloat"/>
 								<option id="com.crt.advproject.link.cpp.nanofloat.scanf.1015326109" name="Enable scanf float " superClass="com.crt.advproject.link.cpp.nanofloat.scanf"/>
 								<option id="com.crt.advproject.link.cpp.toram.2029608061" name="Link application to RAM" superClass="com.crt.advproject.link.cpp.toram"/>
-								<option defaultValue="com.crt.advproject.heapAndStack.mcuXpressoStyle.cpp" id="com.crt.advproject.link.memory.heapAndStack.style.cpp.1904333266" name="Heap and Stack placement" superClass="com.crt.advproject.link.memory.heapAndStack.style.cpp" valueType="enumerated"/>
+								<option defaultValue="com.crt.advproject.heapAndStack.mcuXpressoStyle.cpp" id="com.crt.advproject.link.memory.heapAndStack.style.cpp.1904333266" name="Heap and Stack placement" superClass="com.crt.advproject.link.memory.heapAndStack.style.cpp" value="Default" valueType="enumerated"/>
 								<option id="com.crt.advproject.link.cpp.stackOffset.1449304725" name="Stack offset" superClass="com.crt.advproject.link.cpp.stackOffset"/>
 								<option id="com.crt.advproject.link.cpp.multicore.slave.1125311491" name="Multicore configuration" superClass="com.crt.advproject.link.cpp.multicore.slave"/>
 								<option id="com.crt.advproject.link.cpp.multicore.master.590909439" name="Multicore master" superClass="com.crt.advproject.link.cpp.multicore.master"/>

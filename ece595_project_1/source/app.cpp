@@ -11,6 +11,7 @@
 #include "io_abstraction.h"
 #include "blinds_control.h"
 
+
 typedef struct Task_Cfg_Tag
 {
     TaskFunction_t func;
@@ -53,6 +54,16 @@ void Init_OS_Tasks(void)
 
     Set_GPIO(BLUE_LED, LOW);
 }
+
+/*Bluetooth Serial Connection Setup
+void BluetoothSetup() {
+
+    uint8_t bluebuffer;
+
+    Blue=Serial device(PTC15,PTC14,9600); //tx,rx
+    int read (bluebuffer,);
+
+}*/
 
 void Start_OS(void)
 {
