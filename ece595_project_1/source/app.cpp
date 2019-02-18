@@ -43,6 +43,7 @@ uart_rtos_config_t uart_config =
 /* Task function declarations */
 static void Init_App_Task(void *pvParameters);
 static void Blinds_Control_Task(void *pvParameters);
+static void BluetoothSetup();
 
 /* Task Configurations */
 #define NUM_TASKS (2)
@@ -75,11 +76,16 @@ void Init_OS_Tasks(void)
 }
 
 /*Bluetooth Serial Connection Setup */
-void BluetoothSetup()
+static void BluetoothSetup()
 {
     /* Initialize a UART instance */
     uart_config.srcclk = CLOCK_GetFreq(UART4_CLK_SRC);
     UART_RTOS_Init(&Handle, &T_Handle, &uart_config);
+    while(1)
+    {
+
+        vTaskDelay(pdMS_TO_TICKS(1000));
+    }
 }
 
 void Start_OS(void)
@@ -95,6 +101,7 @@ static void Init_App_Task(void *pvParameters)
     {
         printf("Initializing application...\r\n");
         Init_Blinds_Control();
+        BluetoothSetup();
         vTaskSuspend(NULL);
     }
 }
