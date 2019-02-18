@@ -43,7 +43,8 @@ uart_rtos_config_t uart_config =
 /* Task function declarations */
 static void Init_App_Task(void *pvParameters);
 static void Blinds_Control_Task(void *pvParameters);
-static void BluetoothSetup();
+static void BluetoothSetup(void);
+static void BluetoothTask(void *pvParameters);
 
 /* Task Configurations */
 #define NUM_TASKS (2)
@@ -51,8 +52,8 @@ const Task_Cfg_T Task_Cfg_Table[NUM_TASKS] =
 {
     /* Function,          Name,             Stack Size,  Priority */
     {Init_App_Task,       "Init_App",       100,         configMAX_PRIORITIES - 1},
-    {Blinds_Control_Task, "Blinds Control", 1000,        configMAX_PRIORITIES - 2},
-    {BluetoothSetup,      "BluetoothSetup", 100,         configMAX_PRIORITIES - 3}
+    {Blinds_Control_Task, "Blinds Control", 1000,        configMAX_PRIORITIES - 3},
+    {BluetoothTask,       "BluetoothTask",  1000,        configMAX_PRIORITIES - 2},
 };
 
 /* Local function declarations */
@@ -77,15 +78,18 @@ void Init_OS_Tasks(void)
 }
 
 /*Bluetooth Serial Connection Setup */
-static void BluetoothSetup()
+static void BluetoothSetup(void)
 {
     /* Initialize a UART instance */
     uart_config.srcclk = CLOCK_GetFreq(UART4_CLK_SRC);
     UART_RTOS_Init(&Handle, &T_Handle, &uart_config);
+}
+
+static void BluetoothTask(void *pvParameters)
+{
     while(1)
     {
-
-        vTaskDelay(pdMS_TO_TICKS(1000));
+        vTaskDelay(pdMS_TO_TICKS(400));
     }
 }
 
