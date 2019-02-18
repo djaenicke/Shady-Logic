@@ -51,7 +51,8 @@ const Task_Cfg_T Task_Cfg_Table[NUM_TASKS] =
 {
     /* Function,          Name,             Stack Size,  Priority */
     {Init_App_Task,       "Init_App",       100,         configMAX_PRIORITIES - 1},
-    {Blinds_Control_Task, "Blinds Control", 1000,        configMAX_PRIORITIES - 2}
+    {Blinds_Control_Task, "Blinds Control", 1000,        configMAX_PRIORITIES - 2},
+    {BluetoothSetup,      "BluetoothSetup", 100,         configMAX_PRIORITIES - 3}
 };
 
 /* Local function declarations */
