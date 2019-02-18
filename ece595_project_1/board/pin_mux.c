@@ -74,6 +74,7 @@ void BOARD_InitBootPins(void)
     CLOCK_EnableClock(kCLOCK_Uart4);
 
     NVIC_SetPriority(UART0_RX_TX_IRQn, 5);
+    NVIC_SetPriority(UART4_RX_TX_IRQn, 3);
 }
 
 void BOARD_Enable_SW_Interrupts(void)

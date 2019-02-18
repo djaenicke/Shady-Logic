@@ -10,6 +10,9 @@
 #include "assert.h"
 #include "io_abstraction.h"
 #include "blinds_control.h"
+#include "fsl_uart_freertos.h"
+#include "fsl_uart.h"
+#include "fsl_clock.h"
 
 
 typedef struct Task_Cfg_Tag
@@ -20,9 +23,25 @@ typedef struct Task_Cfg_Tag
     UBaseType_t priority;
 } Task_Cfg_T;
 
+static uint8_t UART_RX_Buffer[4];
+static char UART_TX_Buffer[128];
+
+static uart_rtos_handle_t Handle;
+static struct _uart_handle T_Handle;
+
+uart_rtos_config_t uart_config =
+{
+    UART4,
+    0,
+    9600,
+    kUART_ParityDisabled,
+    kUART_OneStopBit,
+    UART_RX_Buffer,
+    sizeof(UART_RX_Buffer)
+};
+
 /* Task function declarations */
 static void Init_App_Task(void *pvParameters);
-static void UART_Task(void *pvParameters);
 static void Blinds_Control_Task(void *pvParameters);
 
 /* Task Configurations */
@@ -55,15 +74,13 @@ void Init_OS_Tasks(void)
     Set_GPIO(BLUE_LED, LOW);
 }
 
-/*Bluetooth Serial Connection Setup
-void BluetoothSetup() {
-
-    uint8_t bluebuffer;
-
-    Blue=Serial device(PTC15,PTC14,9600); //tx,rx
-    int read (bluebuffer,);
-
-}*/
+/*Bluetooth Serial Connection Setup */
+void BluetoothSetup()
+{
+    /* Initialize a UART instance */
+    uart_config.srcclk = CLOCK_GetFreq(UART4_CLK_SRC);
+    UART_RTOS_Init(&Handle, &T_Handle, &uart_config);
+}
 
 void Start_OS(void)
 {
