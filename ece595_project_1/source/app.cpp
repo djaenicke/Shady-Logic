@@ -23,8 +23,10 @@ typedef struct Task_Cfg_Tag
     UBaseType_t priority;
 } Task_Cfg_T;
 
-static uint8_t UART_RX_Buffer[4];
-static char UART_TX_Buffer[128];
+static uint8_t UART_RX_Buffer[8];
+static char UART_TX_Buffer[8];
+static uint32_t length[8];
+static size_t received;
 
 static uart_rtos_handle_t Handle;
 static struct _uart_handle T_Handle;
@@ -89,6 +91,15 @@ static void BluetoothTask(void *pvParameters)
 {
     while(1)
     {
+        int UART_RTOS_Receive(uart_rtos_handle_t Handle, uint8_t UART_RX_Buffer[8], uint32_t length, size_t received);
+        if (strcmp (UART_RX_Buffer, 'OPEN'))
+        {
+                //For Devins open command
+        };
+        if (strcmp (UART_RX_Buffer, 'CLOSE'))
+        {
+                //For Devins close command
+        };
         vTaskDelay(pdMS_TO_TICKS(400));
     }
 }
