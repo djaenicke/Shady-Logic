@@ -26,14 +26,12 @@ typedef struct Task_Cfg_Tag
 
 static char Debug_Tx_Buffer[DEBUG_TX_BUFFER_SIZE];
 static uint8_t Debug_Rx_Buffer[8];
-static uint8_t Bt_Rx_Buffer[8];
+static uint8_t Bt_Rx_Buffer[13];
 
 static uart_rtos_handle_t Debug_Handle;
 static struct _uart_handle Debug_T_Handle;
 static uart_rtos_handle_t BT_Handle;
 static struct _uart_handle BT_T_Handle;
-static uint32_t Length;
-static size_t Received;
 
 uart_rtos_config_t Debug_UART_Config =
 {
@@ -108,6 +106,9 @@ static void BluetoothSetup(void)
 
 static void BluetoothTask(void *pvParameters)
 {
+    static uint16_t last_head=0;
+    size_t rxed = 0;
+
     while(1)
     {
         if (strlen(Debug_Tx_Buffer))
@@ -116,20 +117,24 @@ static void BluetoothTask(void *pvParameters)
             (void) memset(Debug_Tx_Buffer, 0, sizeof(Debug_Tx_Buffer));
         }
 
-        UART_RTOS_Receive(&BT_Handle, Bt_Rx_Buffer, Length, &Received);
+        if (last_head != BT_T_Handle.rxRingBufferHead)
+        {
+            last_head = BT_T_Handle.rxRingBufferHead;
 
-        if (0 == strcmp((const char*)&Bt_Rx_Buffer, "TOGGLE"))
-        {
-            Toggle_Blinds_State();
-            (void) memset(Bt_Rx_Buffer, 0, sizeof(Bt_Rx_Buffer));
-        }
-        else if (0 == strcmp((const char*)&Bt_Rx_Buffer, "AUTO"))
-        {
-            (void) memset(Bt_Rx_Buffer, 0, sizeof(Bt_Rx_Buffer));
-        }
-        else
-        {
+            UART_RTOS_Send(&Debug_Handle, (uint8_t *)Bt_Rx_Buffer, 13);
 
+            if (NULL != strstr((const char*)&Bt_Rx_Buffer, "TOGGLE"))
+            {
+                Toggle_Blinds_State();
+            }
+            else if (NULL != strstr((const char*)&Bt_Rx_Buffer, "AUTO"))
+            {
+
+            }
+            else
+            {
+
+            }
         }
 
         vTaskDelay(pdMS_TO_TICKS(400));
