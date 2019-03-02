@@ -30,13 +30,13 @@ typedef struct Position_Tag
 } Position_T;
 
 
-uint8_t UART_RX_Buffer[4];
-char UART_TX_Buffer[128];
+static uint8_t UART_RX_Buffer[4];
+static char UART_TX_Buffer[128];
 
-uart_rtos_handle_t Handle;
-struct _uart_handle T_Handle;
+static uart_rtos_handle_t Handle;
+static struct _uart_handle T_Handle;
 
-uart_rtos_config_t uart_config =
+uart_rtos_config_t UART_Config =
 {
     UART0,
     0,
@@ -93,8 +93,8 @@ void Init_Blinds_Control(void)
     BOARD_Enable_SW_Interrupts();
 
     /* Initialize a UART instance */
-    uart_config.srcclk = CLOCK_GetFreq(UART0_CLK_SRC);
-    UART_RTOS_Init(&Handle, &T_Handle, &uart_config);
+    UART_Config.srcclk = CLOCK_GetFreq(UART0_CLK_SRC);
+    UART_RTOS_Init(&Handle, &T_Handle, &UART_Config);
     sprintf(UART_TX_Buffer, "Blinds controller initialized. Press SW3 to start position learning procedure.\r\n\n");
     UART_RTOS_Send(&Handle, (uint8_t *)UART_TX_Buffer, strlen(UART_TX_Buffer));
 }
