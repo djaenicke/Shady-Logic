@@ -10,6 +10,10 @@
 #include "assert.h"
 #include "io_abstraction.h"
 #include "blinds_control.h"
+#include "fsl_uart_freertos.h"
+#include "fsl_uart.h"
+#include "fsl_clock.h"
+
 
 typedef struct Task_Cfg_Tag
 {
@@ -19,18 +23,39 @@ typedef struct Task_Cfg_Tag
     UBaseType_t priority;
 } Task_Cfg_T;
 
+static uint8_t UART_RX_Buffer[8];
+static char UART_TX_Buffer[8];
+static uint32_t length[8];
+static size_t received;
+
+static uart_rtos_handle_t Handle;
+static struct _uart_handle T_Handle;
+
+uart_rtos_config_t uart_config =
+{
+    UART4,
+    0,
+    9600,
+    kUART_ParityDisabled,
+    kUART_OneStopBit,
+    UART_RX_Buffer,
+    sizeof(UART_RX_Buffer)
+};
+
 /* Task function declarations */
 static void Init_App_Task(void *pvParameters);
-static void UART_Task(void *pvParameters);
 static void Blinds_Control_Task(void *pvParameters);
+static void BluetoothSetup(void);
+static void BluetoothTask(void *pvParameters);
 
 /* Task Configurations */
 #define NUM_TASKS (2)
 const Task_Cfg_T Task_Cfg_Table[NUM_TASKS] =
 {
     /* Function,          Name,             Stack Size,  Priority */
-    {Init_App_Task,       "Init_App",       110,         configMAX_PRIORITIES - 1},
-    {Blinds_Control_Task, "Blinds Control", 1000,        configMAX_PRIORITIES - 2}
+    {Init_App_Task,       "Init_App",       100,         configMAX_PRIORITIES - 1},
+    {Blinds_Control_Task, "Blinds Control", 1000,        configMAX_PRIORITIES - 3},
+    {BluetoothTask,       "BluetoothTask",  1000,        configMAX_PRIORITIES - 2},
 };
 
 /* Local function declarations */
@@ -54,6 +79,31 @@ void Init_OS_Tasks(void)
     Set_GPIO(BLUE_LED, LOW);
 }
 
+/*Bluetooth Serial Connection Setup */
+static void BluetoothSetup(void)
+{
+    /* Initialize a UART instance */
+    uart_config.srcclk = CLOCK_GetFreq(UART4_CLK_SRC);
+    UART_RTOS_Init(&Handle, &T_Handle, &uart_config);
+}
+
+static void BluetoothTask(void *pvParameters)
+{
+    while(1)
+    {
+        int UART_RTOS_Receive(uart_rtos_handle_t Handle, uint8_t UART_RX_Buffer[8], uint32_t length, size_t received);
+        if (strcmp (UART_RX_Buffer, 'OPEN'))
+        {
+                //For Devins open command
+        };
+        if (strcmp (UART_RX_Buffer, 'CLOSE'))
+        {
+                //For Devins close command
+        };
+        vTaskDelay(pdMS_TO_TICKS(400));
+    }
+}
+
 void Start_OS(void)
 {
     Init_OS_Tasks();
@@ -67,6 +117,7 @@ static void Init_App_Task(void *pvParameters)
     {
         printf("Initializing application...\r\n");
         Init_Blinds_Control();
+        BluetoothSetup();
         vTaskSuspend(NULL);
     }
 }

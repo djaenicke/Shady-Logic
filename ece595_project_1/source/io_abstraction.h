@@ -35,6 +35,8 @@ typedef enum
     SW_3,
     UART0_RX,
     UART0_TX,
+    UART4_RX,
+    UART4_TX,
     NUM_IO /* !!! Make sure this is last */
 } IO_Map_T;
 
