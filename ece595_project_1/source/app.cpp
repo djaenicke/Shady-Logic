@@ -107,7 +107,6 @@ static void BluetoothSetup(void)
 static void BluetoothTask(void *pvParameters)
 {
     static uint16_t last_head=0;
-    size_t rxed = 0;
 
     while(1)
     {
@@ -122,14 +121,16 @@ static void BluetoothTask(void *pvParameters)
             last_head = BT_T_Handle.rxRingBufferHead;
 
             UART_RTOS_Send(&Debug_Handle, (uint8_t *)Bt_Rx_Buffer, 13);
+            UART_RTOS_Send(&Debug_Handle, (uint8_t *)"\r\n", sizeof("\r\n"));
 
             if (NULL != strstr((const char*)&Bt_Rx_Buffer, "TOGGLE"))
             {
+                Change_Control_State(MANUAL_CONTROL);
                 Toggle_Blinds_State();
             }
             else if (NULL != strstr((const char*)&Bt_Rx_Buffer, "AUTO"))
             {
-
+                Change_Control_State(LIGHT_CONTROL);
             }
             else
             {
@@ -164,7 +165,7 @@ static void Blinds_Control_Task(void *pvParameters)
     while(1)
     {
         Ctrl_State_Machine();
-        vTaskDelay(pdMS_TO_TICKS(1000));
+        vTaskDelay(pdMS_TO_TICKS(900));
     }
 }
 

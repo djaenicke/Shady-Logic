@@ -3,6 +3,7 @@
 
 #include "blinds_control.h"
 #include "motor_controller.h"
+#include "light_sensor.h"
 #include "fsl_port.h"
 #include "pin_mux.h"
 #include "MK64F12.h"
@@ -11,17 +12,10 @@
 #include "fsl_clock.h"
 #include "app.h"
 
-typedef enum
-{
-    POSITION_NOT_LEARNED=0,
-    REQUEST_CLOSED_POSITION,
-    SEEK_OPEN_POSITION,
-    POSITION_LEARNED,
-    MANUAL_CONTROL,
-    LIGHT_CONTROL,
-    TIME_CONTROL,
-    IDLE
-} Control_State_T;
+#define MIN_LIGHT  (0)
+#define MAX_LIGHT  (700)
+
+#define HYSTERESIS (15)
 
 typedef struct Position_Tag
 {
@@ -40,8 +34,12 @@ static bool Toggle_State = false;
 static volatile bool Print_Closed_Pos_Info = false;
 static volatile bool Print_Open_Pos_Info = false;
 
+static LightSensor Light_Sensor;
+
 static void Run_Position_Learning(void);
 static void Boolean_Position_Control(void);
+void Light_Control(void);
+static uint8_t Map_Light_To_Position(uint16_t light_val);
 
 extern "C"
 {
@@ -138,10 +136,13 @@ void Ctrl_State_Machine(void)
             Blinds_Position.fully_open = (uint8_t) Stepper_Motor.Get_Position();
             Blinds_Position.current = Blinds_Position.fully_open;
             Stepper_Motor.Sleep();
-            Ctrl_State = MANUAL_CONTROL; /* !!! TEMPORARY  !!!*/
+            Ctrl_State = MANUAL_CONTROL;
             break;
         case IDLE:
+            break;
         case LIGHT_CONTROL:
+            Light_Control();
+            break;
         case TIME_CONTROL:
             break;
         case MANUAL_CONTROL:
@@ -192,4 +193,82 @@ void Toggle_Blinds_State(void)
 {
     Toggle_State = true;
 }
+
+void Change_Control_State(Control_State_T new_state)
+{
+    float deg_change;
+
+    switch(new_state)
+    {
+        case LIGHT_CONTROL:
+            Ctrl_State = LIGHT_CONTROL;
+            break;
+        case MANUAL_CONTROL:
+            if (LIGHT_CONTROL == Ctrl_State)
+            {
+                deg_change = ((float)Blinds_Position.current - Blinds_Position.fully_open)*-1;
+                Stepper_Motor.Wakeup();
+                Stepper_Motor.Rotate(deg_change);
+                Stepper_Motor.Sleep();
+                Blinds_Position.current = Stepper_Motor.Get_Position();
+            }
+            Ctrl_State = MANUAL_CONTROL;
+            break;
+        default:
+            /* Do Nothing */
+            break;
+    }
+}
+
+void Light_Control(void)
+{
+    uint16_t new_position = 0;
+    float deg_change;
+    bool new_position_requested = false;
+
+    new_position = Map_Light_To_Position(Light_Sensor.Get_Value());
+
+    sprintf(UART_TX_Buffer, "Current Position = %d, New Position = %d\r\n", Blinds_Position.current, new_position);
+    Add_Debug_Message(UART_TX_Buffer);
+
+    if (abs(new_position - Blinds_Position.current) > HYSTERESIS)
+    {
+        new_position_requested = true;
+    }
+    else if (new_position > (Blinds_Position.fully_open-HYSTERESIS))
+    {
+        new_position = Blinds_Position.fully_open;
+        new_position_requested = true;
+    }
+    else if (new_position < (Blinds_Position.fully_closed+HYSTERESIS))
+    {
+        new_position = Blinds_Position.fully_closed;
+        new_position_requested = true;
+    }
+
+    if (new_position_requested)
+    {
+        deg_change = ((float)Blinds_Position.current - new_position)*-1;
+
+        Stepper_Motor.Wakeup();
+        Stepper_Motor.Rotate(deg_change);
+        Stepper_Motor.Sleep();
+
+        Blinds_Position.current = Stepper_Motor.Get_Position();
+    }
+}
+
+uint8_t Map_Light_To_Position(uint16_t light_val)
+{
+    uint8_t ret_val;
+
+    if (light_val > MAX_LIGHT)
+    {
+        light_val = MAX_LIGHT;
+    }
+
+    ret_val = ((float)light_val/MAX_LIGHT)*Blinds_Position.fully_open;
+    return(ret_val);
+}
+
 
