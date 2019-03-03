@@ -6,6 +6,7 @@
 
 /* Application includes */
 #include <stdio.h>
+#include <string.h>
 #include "app.h"
 #include "assert.h"
 #include "io_abstraction.h"
@@ -23,23 +24,35 @@ typedef struct Task_Cfg_Tag
     UBaseType_t priority;
 } Task_Cfg_T;
 
-static uint8_t UART_RX_Buffer[8];
-static char UART_TX_Buffer[8];
-static uint32_t length[8];
-static size_t received;
+static char Debug_Tx_Buffer[DEBUG_TX_BUFFER_SIZE];
+static uint8_t Debug_Rx_Buffer[8];
+static uint8_t Bt_Rx_Buffer[13];
 
-static uart_rtos_handle_t Handle;
-static struct _uart_handle T_Handle;
+static uart_rtos_handle_t Debug_Handle;
+static struct _uart_handle Debug_T_Handle;
+static uart_rtos_handle_t BT_Handle;
+static struct _uart_handle BT_T_Handle;
 
-uart_rtos_config_t uart_config =
+uart_rtos_config_t Debug_UART_Config =
+{
+    UART0,
+    0,
+    115200,
+    kUART_ParityDisabled,
+    kUART_OneStopBit,
+    Debug_Rx_Buffer,
+    sizeof(Debug_Rx_Buffer)
+};
+
+uart_rtos_config_t BT_UART_Config =
 {
     UART4,
     0,
     9600,
     kUART_ParityDisabled,
     kUART_OneStopBit,
-    UART_RX_Buffer,
-    sizeof(UART_RX_Buffer)
+    Bt_Rx_Buffer,
+    sizeof(Bt_Rx_Buffer)
 };
 
 /* Task function declarations */
@@ -49,13 +62,13 @@ static void BluetoothSetup(void);
 static void BluetoothTask(void *pvParameters);
 
 /* Task Configurations */
-#define NUM_TASKS (2)
+#define NUM_TASKS (3)
 const Task_Cfg_T Task_Cfg_Table[NUM_TASKS] =
 {
     /* Function,          Name,             Stack Size,  Priority */
     {Init_App_Task,       "Init_App",       100,         configMAX_PRIORITIES - 1},
-    {Blinds_Control_Task, "Blinds Control", 1000,        configMAX_PRIORITIES - 3},
-    {BluetoothTask,       "BluetoothTask",  1000,        configMAX_PRIORITIES - 2},
+    {Blinds_Control_Task, "Blinds Control", 500,         configMAX_PRIORITIES - 3},
+    {BluetoothTask,       "BluetoothTask",  500,         configMAX_PRIORITIES - 2},
 };
 
 /* Local function declarations */
@@ -65,6 +78,10 @@ static void Init_OS_Tasks(void);
 void Init_OS_Tasks(void)
 {
     uint8_t i;
+
+    /* Initialize a UART instance */
+    Debug_UART_Config.srcclk = CLOCK_GetFreq(UART0_CLK_SRC);
+    UART_RTOS_Init(&Debug_Handle, &Debug_T_Handle, &Debug_UART_Config);
 
     for (i=0; i<NUM_TASKS; i++)
     {
@@ -83,23 +100,44 @@ void Init_OS_Tasks(void)
 static void BluetoothSetup(void)
 {
     /* Initialize a UART instance */
-    uart_config.srcclk = CLOCK_GetFreq(UART4_CLK_SRC);
-    UART_RTOS_Init(&Handle, &T_Handle, &uart_config);
+    BT_UART_Config.srcclk = CLOCK_GetFreq(UART4_CLK_SRC);
+    UART_RTOS_Init(&BT_Handle, &BT_T_Handle, &BT_UART_Config);
 }
 
 static void BluetoothTask(void *pvParameters)
 {
+    static uint16_t last_head=0;
+
     while(1)
     {
-        int UART_RTOS_Receive(uart_rtos_handle_t Handle, uint8_t UART_RX_Buffer[8], uint32_t length, size_t received);
-        if (strcmp (UART_RX_Buffer, 'OPEN'))
+        if (strlen(Debug_Tx_Buffer))
         {
-                //For Devins open command
-        };
-        if (strcmp (UART_RX_Buffer, 'CLOSE'))
+            UART_RTOS_Send(&Debug_Handle, (uint8_t *)Debug_Tx_Buffer, strlen(Debug_Tx_Buffer));
+            (void) memset(Debug_Tx_Buffer, 0, sizeof(Debug_Tx_Buffer));
+        }
+
+        if (last_head != BT_T_Handle.rxRingBufferHead)
         {
-                //For Devins close command
-        };
+            last_head = BT_T_Handle.rxRingBufferHead;
+
+            UART_RTOS_Send(&Debug_Handle, (uint8_t *)Bt_Rx_Buffer, 13);
+            UART_RTOS_Send(&Debug_Handle, (uint8_t *)"\r\n", sizeof("\r\n"));
+
+            if (NULL != strstr((const char*)&Bt_Rx_Buffer, "TOGGLE"))
+            {
+                Change_Control_State(MANUAL_CONTROL);
+                Toggle_Blinds_State();
+            }
+            else if (NULL != strstr((const char*)&Bt_Rx_Buffer, "AUTO"))
+            {
+                Change_Control_State(LIGHT_CONTROL);
+            }
+            else
+            {
+
+            }
+        }
+
         vTaskDelay(pdMS_TO_TICKS(400));
     }
 }
@@ -127,6 +165,16 @@ static void Blinds_Control_Task(void *pvParameters)
     while(1)
     {
         Ctrl_State_Machine();
-        vTaskDelay(pdMS_TO_TICKS(1000));
+        vTaskDelay(pdMS_TO_TICKS(900));
     }
+}
+
+void Add_Debug_Message(char *msg)
+{
+    if (strlen(msg)<DEBUG_TX_BUFFER_SIZE)
+    {
+        memcpy(Debug_Tx_Buffer, msg, strlen(msg));
+    }
+    else
+        assert(false);
 }

@@ -6,6 +6,8 @@
 #include "fsl_port.h"
 #include "fsl_gpio.h"
 
+#define LIGHT_SENSOR_CHANNEL (12)
+
 typedef enum
 {
     LOW=0,
@@ -37,6 +39,7 @@ typedef enum
     UART0_TX,
     UART4_RX,
     UART4_TX,
+    LIGHT_SENSOR,
     NUM_IO /* !!! Make sure this is last */
 } IO_Map_T;
 

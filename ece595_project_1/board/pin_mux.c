@@ -43,6 +43,7 @@ product: Pins v4.0
 #include "pin_mux.h"
 #include "fsl_port.h"
 #include "io_abstraction.h"
+#include "fsl_adc16.h"
 
 #define SOPT5_UART0TXSRC_UART_TX      0x00u   /*!< UART 0 transmit data source select: UART0_TX pin */
 
@@ -52,6 +53,8 @@ product: Pins v4.0
 void BOARD_InitBootPins(void)
 {
     port_interrupt_t p_int_cfg;
+    adc16_config_t adc16_cfg;
+    adc16_channel_config_t adc16ChannelConfigStruct;
     uint8_t i;
 
     /* Enable Port Clock Gate Controls */
@@ -75,6 +78,20 @@ void BOARD_InitBootPins(void)
 
     NVIC_SetPriority(UART0_RX_TX_IRQn, 5);
     NVIC_SetPriority(UART4_RX_TX_IRQn, 3);
+
+    ADC16_GetDefaultConfig(&adc16_cfg);
+
+    adc16_cfg.referenceVoltageSource = kADC16_ReferenceVoltageSourceVref;
+    adc16_cfg.enableContinuousConversion = true;
+
+
+    ADC16_Init(ADC0, &adc16_cfg);
+    ADC16_EnableHardwareTrigger(ADC0, false); /* Make sure the software trigger is used. */
+
+    adc16ChannelConfigStruct.channelNumber = LIGHT_SENSOR_CHANNEL;
+    adc16ChannelConfigStruct.enableInterruptOnConversionCompleted = false;
+
+    ADC16_SetChannelConfig(ADC0, 0, &adc16ChannelConfigStruct);
 }
 
 void BOARD_Enable_SW_Interrupts(void)
